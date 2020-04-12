@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700|Noto+Sans|Open+Sans:500,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat',sans-serif;
+  scroll-behavior: smooth;
+}
+body{
+  background-image: url("background.gif");
+  background-size: cover;
+}
+body::selection{
+  color: white;
+}
+body::-webkit-scrollbar{
+  width: 16px;
+}
+body::-webkit-scrollbar-track{
+  background: #e6e6e6;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+body::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background: linear-gradient(#3498db,#9b59b6);
+}
+body::-webkit-scrollbar-thumb:hover{
+  background: linear-gradient(#2691d9,#954eb1);
+}
+nav
+{	
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 80px;
+  width: 100%;
+  box-shadow: 1px 1px 15px silver;
+  z-index: 1;
+  transition: top 0.3s;
+  background: #000 repeat-y;
+}
+
+label{
+  line-height: 80px;
+  padding: 0 80px;
+  font-size: 40px;
+  color: #0089f2;
+  letter-spacing: -1px;
+  user-select: none;
+}
+nav ul{
+  list-style: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  line-height: 80px;
+  margin-right: 50px;
+  list-style-type: none;
+  font-size: 16px;
+	font-weight: bold; 
+}
+nav ul li{
+  margin: 0 5px;
+}
+nav ul li:hover a{
+  color: #0089f2;
+  box-shadow: inset 0 0 5px #0a87f5,
+              inset 0 0 10px #85c3fa,
+              inset 0 0 15px #b6dbfc;
+}
+nav ul li a{
+  color: rgb(18, 175, 236);
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Open Sans',sans-serif;
+}
+iframe{
+  text-align: center;
+  border: 1px solid #ccc;
+  background-color: #e7e7e7;
+  font-size: 20px
+}
+
+img {
+  border: 1px solid #ddd;
+  vertical-align: middle;
+  width: 200px;
+  height: 200px;
+}
+
+/* The grid: Four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+/* Style the images inside the grid */
+.column img {
+  opacity: 0.8; 
+  cursor: pointer; 
+}
+
+.column img:hover {
+  opacity: 1;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+h1 {
+  text-align: center;
+  color: black;
+  background: white; 
+}
+h2{
+  text-align: center;
+  color: white;
+  font-family: 'Montserrat',sans-serif;
+  font-weight: bold; 
+  text-decoration: underline;
+}
+ul[id=ans]{
+  box-sizing: border-box;
+  margin-right: 60px ;
+  margin-left: 80px;
+}
+
+ul b{
+  background-color: #4529aa;
+}
+p[id=q]{
+  margin-right: 60px ;
+}
+li[id=first]{
+  margin-right: 50px;
+}
+
+ul[id= secend]{
+  margin-right: 50px;
+
+}
+
+#about
+{
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+
+#photos{
+  font-size: 20px;
+}
+
+#playlist{
+  font-size: 20px;
+  text-align: center;
+}
+
+#like{
+  font-size: 20px;
+  text-align: center;
+}
+
+#qrcoder{
+  font-size: 20px;
+  text-align: center;
+}
+
+#spa{
+  
+  font-size: 20px;
+  text-align: center;
+  color:white;
+  text-align: right;
+
+}
+#contact{
+  font-size: 20px;
+  text-align: center;
+
+}
+.Question{
+  margin: auto;
+  padding: 2em;
+  width: 1300px;
+}
+input[type=text], textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 500px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #0c5cf1;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #0a1d3f;
+}
+
+form {
+  margin-left: 330px;
+  margin-right: 330px;
+  box-sizing: border-box;
+  text-align: left;
+  border-radius: 5px;
+  background-color: #a4c1f7;
+  padding: 20px;
+
+}
+label[type="1"]{
+  padding: 8px;
+  color: #000;
+  font-family: 'Montserrat',sans-serif;
+  font-size: 20px;
+}
+.row:after, .row:before {
+  content: " ";
+  display: table;
+  clear: both;
+}
+.span6 {
+  float: left;
+  width: 48%;
+  padding: 1%;
+}
