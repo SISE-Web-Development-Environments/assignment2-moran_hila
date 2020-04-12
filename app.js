@@ -119,7 +119,7 @@ function Draw() {
 			} else if (board[i][j] == 1) {
 				context.beginPath();
 				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				context.fillStyle = "black"; //color
+				context.fillStyle = "white"; //color
 				context.fill();
 			} else if (board[i][j] == 4) {
 				context.beginPath();
