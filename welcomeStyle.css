@@ -1,5 +1,5 @@
 *{
-    margin: 5% auto;
+    margin: 2% auto;
     box-sizing: border-box;
     font-family: 'Montserrat',sans-serif;
     scroll-behavior: smooth;
@@ -48,4 +48,9 @@
   }
   body::-webkit-scrollbar-thumb:hover{
     background: linear-gradient(#2691d9,#954eb1);
+  }
+  label{
+  color: white;
+  font-family: 'Montserrat',sans-serif;
+  font-size: 26px;
   }
