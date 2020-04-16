@@ -149,3 +149,16 @@ ul[id= secend]{
   margin-right: 50px;
 
 }
+
+
+.marquee { 
+  overflow: hidden;
+  position: relative;
+  animation: MarqueeLeft linear 18s infinite;
+}
+
+@keyframes MarqueeLeft 
+{
+  0% { right: -100% }
+  100% { right: 100% }
+}
