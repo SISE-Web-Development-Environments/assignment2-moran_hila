@@ -48,6 +48,7 @@ label{
   color: #0089f2;
   letter-spacing: -1px;
   user-select: none;
+  align-items: baseline;
 }
 nav ul{
   list-style: none;
