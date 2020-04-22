@@ -1,0 +1,65 @@
+.Welcome-container{
+    width: 100%; 
+    height: 100%; 
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.Welcome-form {
+    padding: 30px 50px 30px 50px;
+    background-color: #1e1e1f;
+}
+
+.Welcome-form-title {
+    width: 100%;
+    display: block;
+    font-family: Poppins-Regular;
+    font-size: 30px;
+    color: #e4ecee;
+    line-height: 1.2;
+    text-align: center;
+}
+.Welcome-frame{
+    margin-top: 14%;
+    margin-bottom: 17%;
+    padding: 5px 5px 5px 5px;
+    background-color: rgb(137, 142, 150);
+}
+
+.buttons{
+    margin-left: 2em;
+    align-items: center;
+}
+
+button[type=buttonWelcome]{
+	border: none;
+	padding: 0.6em 1em;
+	background: black;
+	color: #00e1ff;
+	font-family: 'Open Sans',sans-serif;
+	font-size: 1em;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	cursor: pointer;
+    display: inline-block;
+    font-weight: bold; 
+	margin: 3px 2px;
+	border-radius: 2px;
+	box-shadow: inset 0 0 5px #939aa000,
+				inset 0 0 10px #97aabb65,
+				inset 0 0 15px #b1b3b4;
+	width: 80%;
+}
+
+button[type=buttonWelcome]:hover {
+	background: rgba(255, 255, 255, 0.479);
+}
+
+
+  
