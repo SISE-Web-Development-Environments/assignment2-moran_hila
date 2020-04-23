@@ -12,7 +12,8 @@
 }
 
 .Settings-form {
-  padding: 30px 50px 30px 50px;
+  width: 850px;
+  
   background-color: #1e1e1f;
 }
 
@@ -63,7 +64,7 @@ background: rgba(255, 255, 255, 0.479);
     display: grid;
     grid-template-columns: auto auto;
     padding: 10px;
-  }
+}
   .grid-container-MonsterAndTime {
     display: grid;
     grid-column-gap: 40px;
@@ -77,17 +78,18 @@ background: rgba(255, 255, 255, 0.479);
   }
   
   .grid-item-BallsAndShiftButtuns {
+    padding: 5px;
     margin: auto;
-    align-self: center;
     background-color: rgba(255, 0, 119, 0.8);
     border: 1px solid white;
-    
     text-align: center;
+    width: 85%;
+    height: 100%;
   }
   .grid-item-MonsterAndTime {
     margin: auto;
     align-self: center;
-    background-color: rgb(238, 227, 68);
+    background-color: rgba(255, 0, 119, 0.8);
     border: 1px solid white;
     padding: 20px;
     text-align: center;
@@ -102,34 +104,26 @@ background: rgba(255, 255, 255, 0.479);
     text-align: center;
   }
 
-  label[for=BallsAndShift]{
+  label[type=BallsAndShift]{
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Poppins-Regular;
+  }
+
+  table{
+    margin: auto;
+  }
+
+  tr{
     font-size: 20px;
     font-family: Poppins-Regular;
   }
-  table{
-    padding: 10px 50px 50px 50px;
+  .grid-item-BallsAndShiftButtuns label[type=colors]{
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+    font-family: Poppins-Regular;
   }
-
-
-
-/*** Alt-Keys Popup extension (included in the keyboard.css file) ***/
-/* clickable overlay on top of keyboard to hide the popup */
-.ui-keyboard-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.5);
-}
-/* the actual popup styling, class names from the css.container option
- are also added */
-.ui-keyboard-popup {
-  display: inline-block;
-  /* default buttons are 2em wide + .1em margin on either side (set in
-   .ui-keyboard-button definition); so use multiples of 2.2em for a
-   max-width if you don't want any extra white space on the sides,
-   e.g. 5 buttons * 2.2em = 11em, 6 buttons * 2.2em = 13.2em, etc
-  */
-  max-width: 22em; /* 10 buttons */
-}
+  select#gender option[value="male"]   { background-image:url(PicturesOfBalls/AzureBall.png);   }
+  select#gender option[value="female"] { background-image:url(PicturesOfBalls/BlueBall.png); }
+  select#gender option[value="others"] { background-image:url(PicturesOfBalls/BrownBall.png); }

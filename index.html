@@ -13,7 +13,7 @@
     <script src="js/modernizr.custom.js"></script>
     <script src="js/jquery-3.4.1.slim.min.js"></script>
     <script src="js/jquery.validate.js"></script>
-    
+
 </head>
 
 <body>
@@ -246,59 +246,115 @@
                     <span class="Settings-form-title">Settings:</span>
                     <div class="grid-container-BallsAndShiftButtuns">
                         <div class="grid-item-BallsAndShiftButtuns">
-                            <label for="BallsAndShift">Set the game's shift button:</label>
+                            <label type="BallsAndShift">Set the game's shift button:</label>
                             <table>
                                 <tr>
-                                  <td>Up:</td>
-                                  <td><input id="upTarget"  maxlength="1"  required=""></td>
+                                    <td>Up:</td>
+                                    <td>
+                                        <input id="upTarget" maxlength="1" required="">
+                                    </td>
                                 </tr>
                                 <tr>
-                                  <td>Down:</td>
-                                  <td><input id="downTarget"  maxlength="1"  required=""></td>
+                                    <td>Down:</td>
+                                    <td>
+                                        <input id="downTarget" maxlength="1" required="">
+                                    </td>
                                 </tr>
                                 <td>Rigth:</td>
-                                <td><input id="rigthTarget"  maxlength="1"  required=""></td>
-                            </tr>
-                                <tr>
-                                  <td>Left:</td>
-                                  <td><input id="leftTarget"  maxlength="1"  required=""></td>
+                                <td>
+                                    <input id="rigthTarget" maxlength="1" required="">
+                                </td>
                                 </tr>
-                              </table>
+                                <tr>
+                                    <td>Left:</td>
+                                    <td>
+                                        <input id="leftTarget" maxlength="1" required="">
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="grid-item-BallsAndShiftButtuns">
-                            <label for="BallsAndShift">Set balls colors:</label>
+                            <label type="BallsAndShift">Set balls colors:</label>
                             <table>
                                 <tr>
-                                  <td>Amount:</td>
-                                  <td><input class="text" type="text" name="Username" required=""></td>
+                                    <td>Amount:</td>
+                                    <td>
+                                        <input type="number" id="amount" name="tentacles" min="50" max="90" required="">
+                                    </td>
                                 </tr>
-                                <tr>
-                                  <td>colors:</td>
-                                </tr>
+                            </table>
+                            <label type="colors">Colors:</label>
+                            <table>
                                 <td>5 point:</td>
-                                  <td><input class="text" type="text" name="Username" required=""></td>
-                                </tr>
-                                <td>15 point:</td>
-                                  <td><input class="text" type="text" name="Username" required=""></td>
-                                </tr>
-                                <td>25 point:</td>
-                                  <td><input class="text" type="text" name="Username" required=""></td>
-                                </tr>
-                              </table>
+                                <td>
+                                    <select onchange="pictureChange5Point(event)">
+                                        <option value="Azure">Azure</option>
+                                        <option value="Blue">Blue</option>
+                                        <option value="Brown">Brown</option>
+                                        <option value="Gray">Gray</option>
+                                        <option value="Green">Green</option>
+                                        <option value="Pink">Pink</option>
+                                        <option value="Red">Read</option>
+                                        <option value="Yellow">Yellow</option>
+                                        <option value="Purple">Purple</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <img id="image1" style="width: 30px; height:30px;"></tr>
+                                    <td>15 point:</td>
+                                    <td>
+                                        <select onchange="pictureChange15Point(event)">
+                                            <option value="Azure">Azure</option>
+                                            <option value="Blue">Blue</option>
+                                            <option value="Brown">Brown</option>
+                                            <option value="Gray">Gray</option>
+                                            <option value="Green">Green</option>
+                                            <option value="Pink">Pink</option>
+                                            <option value="Red">Read</option>
+                                            <option value="Yellow">Yellow</option>
+                                            <option value="Purple">Purple</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <img id="image2" style="width: 30px; height:30px;"></tr>
+                                        </tr>
+                                        <td>25 point:</td>
+                                        <td>
+                                            <select onchange="pictureChange25Point(event)">
+                                                <option value="Azure">Azure</option>
+                                                <option value="Blue">Blue</option>
+                                                <option value="Brown">Brown</option>
+                                                <option value="Gray">Gray</option>
+                                                <option value="Green">Green</option>
+                                                <option value="Pink">Pink</option>
+                                                <option value="Red">Read</option>
+                                                <option value="Yellow">Yellow</option>
+                                                <option value="Purple">Purple</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <img id="image3" style="width: 30px; height:30px;"></tr>
+                                            </tr>
+                            </table>
+
                         </div>
                     </div>
                     <div class="grid-container-MonsterAndTime">
                         <div class="grid-item-MonsterAndTime">
                             <table>
                                 <tr>
-                                  <td>Up:</td>
-                                  <td><input class="text" type="text" name="Username" required=""></td>
+                                    <td>Amount of monsters:</td>
+                                    <td>
+                                        <input type="number" id="amount" name="tentacles" min="1" max="4" required="">
+                                    </td>
                                 </tr>
                                 <tr>
-                                  <td>Down:</td>
-                                  <td><input class="text" type="text" name="Username"  required=""></td>
+                                    <td>Game Time:</td>
+                                    <td>
+                                        <input type="number" id="amount" name="tentacles" min="60" required="">
+                                    </td>
                                 </tr>
-                              </table>
+                            </table>
                         </div>
                     </div>
                     <div class="grid-container-Buttons">
@@ -307,17 +363,125 @@
                         </div>
                         <div class="grid-item-Buttons">
                             <button type="buttonSettings" onclick="randoSettings()">Rando Settings</button>
-                        </div>                        
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <script>
-        welcame();
-    </script>
-    
+    <script>welcame();</script>
+
 </body>
+<script>
+    $("#upTarget").keydown(function(event) {
+        if (checkKeyIsValid(event.which)) {
+            var keyName = event.key;
+            document.getElementById("upTarget").value = keyName;
+            //var keyUp =event.which;
+        }
+
+    });
+    $("#downTarget").keydown(function(event) {
+        if (checkKeyIsValid(event.which)) {
+            var keyName = event.key;
+            document.getElementById("downTarget").value = keyName;
+            //var keyUp =event.which;
+        }
+
+    });
+    $("#rigthTarget").keydown(function(event) {
+        if (checkKeyIsValid(event.which)) {
+            var keyName = event.key;
+            document.getElementById("rigthTarget").value = keyName;
+            //var keyUp =event.which;
+        }
+
+    });
+    $("#leftTarget").keydown(function(event) {
+        if (checkKeyIsValid(event.which)) {
+            var keyName = event.key;
+            document.getElementById("leftTarget").value = keyName;
+            //var keyUp =event.which;
+        }
+
+    });
+
+    function checkKeyIsValid(key) {
+        if (37 <= key && key <= 40) {
+            return true;
+        } else if (48 <= key && key <= 90) {
+            return true;
+        } else if (76 <= key && key <= 105) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    pictureChange5Point = function(event) {
+        if (event.target.value == "Azure") {
+            document.getElementById("image1").src = "css/picturesOfBalls/AzureBall.png";
+        } else if (event.target.value == "Blue") {
+            document.getElementById("image1").src = "css/picturesOfBalls/BlueBall.png";
+        } else if (event.target.value == "Brown") {
+            document.getElementById("image1").src = "css/picturesOfBalls/BrownBall.png";
+        } else if (event.target.value == "Green") {
+            document.getElementById("image1").src = "css/picturesOfBalls/GreenBall.png";
+        } else if (event.target.value == "Pink") {
+            document.getElementById("image1").src = "css/picturesOfBalls/PinkBall.png";
+        } else if (event.target.value == "Red") {
+            document.getElementById("image1").src = "css/picturesOfBalls/RedBall.png";
+        } else if (event.target.value == "Yellow") {
+            document.getElementById("image1").src = "css/picturesOfBalls/YellowBall.png";
+        } else if (event.target.value == "Purple") {
+            document.getElementById("image1").src = "css/picturesOfBalls/PurpleBall.png";
+        } else if (event.target.value == "Gray") {
+            document.getElementById("image1").src = "css/picturesOfBalls/GrayBall.png";
+        }
+    }
+    pictureChange15Point = function(event) {
+        if (event.target.value == "Azure") {
+            document.getElementById("image2").src = "css/picturesOfBalls/AzureBall.png";
+        } else if (event.target.value == "Blue") {
+            document.getElementById("image2").src = "css/picturesOfBalls/BlueBall.png";
+        } else if (event.target.value == "Brown") {
+            document.getElementById("image2").src = "css/picturesOfBalls/BrownBall.png";
+        } else if (event.target.value == "Green") {
+            document.getElementById("image2").src = "css/picturesOfBalls/GreenBall.png";
+        } else if (event.target.value == "Pink") {
+            document.getElementById("image2").src = "css/picturesOfBalls/PinkBall.png";
+        } else if (event.target.value == "Red") {
+            document.getElementById("image2").src = "css/picturesOfBalls/RedBall.png";
+        } else if (event.target.value == "Yellow") {
+            document.getElementById("image2").src = "css/picturesOfBalls/YellowBall.png";
+        } else if (event.target.value == "Purple") {
+            document.getElementById("image2").src = "css/picturesOfBalls/PurpleBall.png";
+        } else if (event.target.value == "Gray") {
+            document.getElementById("image2").src = "css/picturesOfBalls/GrayBall.png";
+        }
+    }
+    pictureChange25Point = function(event) {
+        if (event.target.value == "Azure") {
+            document.getElementById("image3").src = "css/picturesOfBalls/AzureBall.png";
+        } else if (event.target.value == "Blue") {
+            document.getElementById("image3").src = "css/picturesOfBalls/BlueBall.png";
+        } else if (event.target.value == "Gray") {
+            document.getElementById("image3").src = "css/picturesOfBalls/GrayBall.png";
+        } else if (event.target.value == "Brown") {
+            document.getElementById("image3").src = "css/picturesOfBalls/BrownBall.png";
+        } else if (event.target.value == "Green") {
+            document.getElementById("image3").src = "css/picturesOfBalls/GreenBall.png";
+        } else if (event.target.value == "Pink") {
+            document.getElementById("image3").src = "css/picturesOfBalls/PinkBall.png";
+        } else if (event.target.value == "Red") {
+            document.getElementById("image3").src = "css/picturesOfBalls/RedBall.png";
+        } else if (event.target.value == "Yellow") {
+            document.getElementById("image3").src = "css/picturesOfBalls/YellowBall.png";
+        } else if (event.target.value == "Purple") {
+            document.getElementById("image3").src = "css/picturesOfBalls/PurpleBall.png";
+        }
+    }
+</script>
 
 </html>
