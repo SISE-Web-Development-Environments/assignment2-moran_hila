@@ -6,11 +6,14 @@
     <link rel="stylesheet" type="text/css" href="css/Menu.css">
     <link rel="stylesheet" type="text/css" href="css/Welcome.css">
     <link rel="stylesheet" type="text/css" href="css/Register.css">
+    <link rel="stylesheet" type="text/css" href="css/Setting.css">
     <script type="text/javascript" src="js/menuNav.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/settingKeyboard.js"></script>
     <script src="js/modernizr.custom.js"></script>
     <script src="js/jquery-3.4.1.slim.min.js"></script>
     <script src="js/jquery.validate.js"></script>
+    
 </head>
 
 <body>
@@ -237,13 +240,84 @@
 
     <!--SettingsDiv-->
     <div id="SettingsDiv">
-
+        <div class="Settings-container">
+            <div class="Settings-frame">
+                <form class="Settings-form">
+                    <span class="Settings-form-title">Settings:</span>
+                    <div class="grid-container-BallsAndShiftButtuns">
+                        <div class="grid-item-BallsAndShiftButtuns">
+                            <label for="BallsAndShift">Set the game's shift button:</label>
+                            <table>
+                                <tr>
+                                  <td>Up:</td>
+                                  <td><input id="upTarget"  maxlength="1"  required=""></td>
+                                </tr>
+                                <tr>
+                                  <td>Down:</td>
+                                  <td><input id="downTarget"  maxlength="1"  required=""></td>
+                                </tr>
+                                <td>Rigth:</td>
+                                <td><input id="rigthTarget"  maxlength="1"  required=""></td>
+                            </tr>
+                                <tr>
+                                  <td>Left:</td>
+                                  <td><input id="leftTarget"  maxlength="1"  required=""></td>
+                                </tr>
+                              </table>
+                        </div>
+                        <div class="grid-item-BallsAndShiftButtuns">
+                            <label for="BallsAndShift">Set balls colors:</label>
+                            <table>
+                                <tr>
+                                  <td>Amount:</td>
+                                  <td><input class="text" type="text" name="Username" required=""></td>
+                                </tr>
+                                <tr>
+                                  <td>colors:</td>
+                                </tr>
+                                <td>5 point:</td>
+                                  <td><input class="text" type="text" name="Username" required=""></td>
+                                </tr>
+                                <td>15 point:</td>
+                                  <td><input class="text" type="text" name="Username" required=""></td>
+                                </tr>
+                                <td>25 point:</td>
+                                  <td><input class="text" type="text" name="Username" required=""></td>
+                                </tr>
+                              </table>
+                        </div>
+                    </div>
+                    <div class="grid-container-MonsterAndTime">
+                        <div class="grid-item-MonsterAndTime">
+                            <table>
+                                <tr>
+                                  <td>Up:</td>
+                                  <td><input class="text" type="text" name="Username" required=""></td>
+                                </tr>
+                                <tr>
+                                  <td>Down:</td>
+                                  <td><input class="text" type="text" name="Username"  required=""></td>
+                                </tr>
+                              </table>
+                        </div>
+                    </div>
+                    <div class="grid-container-Buttons">
+                        <div class="grid-item-Buttons">
+                            <button type="buttonSettings" onclick="applySettings()">Apply Settings</button>
+                        </div>
+                        <div class="grid-item-Buttons">
+                            <button type="buttonSettings" onclick="randoSettings()">Rando Settings</button>
+                        </div>                        
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <script>
         welcame();
     </script>
-
+    
 </body>
 
 </html>
