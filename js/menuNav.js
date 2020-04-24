@@ -10,7 +10,7 @@ function welcame() {
     welcome_div.style.display = "block";
     login_div.style.display = "none";
     register_div.style.display = "none";
-    settings_div.style.display = "none";
+    settings_div.style.display = "block";       //  NeedToChangTO: none
     game_div.style.display = "none";
     about_div.style.display = "block";
 
