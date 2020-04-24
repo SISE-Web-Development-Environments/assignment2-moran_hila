@@ -105,7 +105,8 @@ function game_nav() {
     settings_div.style.display = "none";
     game_div.style.display = "block";
     about_div.style.display = "block";
-    Start();
+    SetSettings();
+   
 }
 
 $(document).ready(function () {
