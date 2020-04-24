@@ -7,10 +7,11 @@
     <link rel="stylesheet" type="text/css" href="css/Welcome.css">
     <link rel="stylesheet" type="text/css" href="css/Register.css">
     <script type="text/javascript" src="js/menuNav.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/usersContainer.js"></script>
     <script src="js/modernizr.custom.js"></script>
     <script src="js/jquery-3.4.1.slim.min.js"></script>
-    <script src="js/jquery.validate.js"></script>
+	<script src="js/jquery.validate.js"></script>
 </head>
 
 <body>
@@ -46,20 +47,22 @@
             <div class="Register-frame">
                 <div class="Register-form">
                     <span class="Register-form-title">Register:</span>
-                    <form action="#" method="register">
+                    <form action="#" method="register" name="registerForm" id="RegisterForm">
                         <div class="database">
                             <ul class="Register-ul">
-                                <label for="UserName"><b>User name:     </b></label>
-                                <input class="text" type="text" name="Username" placeholder="User name" required="">
-                                <label for="FullName"><b>Full name:     </b></label>
-                                <input class="text" type="text" name="Full name" placeholder="Full name" required="">
+                                <label for="Username"><b>User name:     </b></label>
+                                <input id="Username" class="text" type="text" name="Username" placeholder="User name" required="">
+								<label for="FirstName"><b>First name:     </b></label>
+								<input id="FirstName" type="text" name="First name" placeholder="First name" required="">
+								<label for="LastName"><b>Last name:     </b></label>
+								<input id="LastName" type="text" name="Last name" placeholder="Last name" required="">
                                 <label for="Email"><b>Email:        </b></label>
-                                <input class="text email" type="email" name="email" placeholder="Email" required="">
+                                <input id="Email" class="text email" type="email" name="email" placeholder="Email" required="">
                                 <label for="Password"><b>Password:      </b></label>
-                                <input class="text" type="password" name="password" placeholder="Password" required="">
+                                <input id="Password" type="password" name="password" placeholder="Password" required="" data-validation="length alphanumeric">
                                 <label for="Password"><b>Confirm Password:      </b></label>
-                                <input class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
-                                <label for="Password"><b>Birth Date:        </b></label>
+								<input id="ConfirmPassword" class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
+                                <label><b>Birth Date:        </b></label>
                                 <select id="days" name="day">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -212,7 +215,25 @@
 
     <!--LoginDiv-->
     <div id="LoginDiv">
-
+		<div class="Register-container"> 
+            <div class="Register-frame">
+                <div class="Register-form">
+                    <span class="Register-form-title">Login:</span>
+                    <form action="#" method="login">
+						<div class="imgcontainer">
+							<center><img src="css/img_avatar2.png" alt="Avatar" class="avatar" width="250" height="250"></center>
+						</div>
+						  <div class="container">
+							<label for="uname" class="label"><b>Username</b></label>
+							<input type="text" placeholder="Enter Username" name="uname" required="">
+							<label for="psw" class="label"><b>Password</b></label>
+							<input type="password" placeholder="Enter Password" name="psw" required="">
+							<button type="buttonRegister">Login</button>
+						  </div>
+                    </form>
+				</div>
+			</div>
+		</div>
     </div>
 
     <!--AboutDiv-->
@@ -239,10 +260,11 @@
     <div id="SettingsDiv">
 
     </div>
-
+	
     <script>
-        welcame();
-    </script>
+		welcame();
+	</script>
+	
 
 </body>
 
