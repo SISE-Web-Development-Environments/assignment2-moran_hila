@@ -42,3 +42,9 @@ nav ul.MenuBar li a{
     text-transform: uppercase;
     font-family: 'Open Sans',sans-serif;
 }
+
+.label {
+  color: white;
+  padding: 8px;
+}
+

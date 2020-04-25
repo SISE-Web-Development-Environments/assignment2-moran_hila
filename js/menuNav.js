@@ -13,9 +13,7 @@ function welcame() {
     settings_div.style.display = "block";       //  NeedToChangTO: none
     game_div.style.display = "none";
     about_div.style.display = "block";
-
-    if (!paused) Pause();
-  }
+}
 
 function login() {
     var welcome_div = document.getElementById("WelcomeDiv");
@@ -31,8 +29,6 @@ function login() {
     settings_div.style.display = "none";
     game_div.style.display = "none";
     about_div.style.display = "block";
-
-    if (!paused) Pause();
 }
 
 function register() {
@@ -49,8 +45,6 @@ function register() {
     settings_div.style.display = "none";
     game_div.style.display = "none";
     about_div.style.display = "block";
-
-    if (!paused) Pause();
 }
 
 
@@ -70,7 +64,7 @@ function about() {
     game_div.style.display = "none";
     about_div.style.display = "block";
 
-    if (!paused) Pause();
+    
 }
 
 
@@ -105,7 +99,8 @@ function game_nav() {
     settings_div.style.display = "none";
     game_div.style.display = "block";
     about_div.style.display = "block";
-    Start();
+    SetSettings();
+   
 }
 
 $(document).ready(function () {
