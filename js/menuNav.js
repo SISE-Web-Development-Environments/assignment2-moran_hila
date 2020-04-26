@@ -94,8 +94,7 @@ function game_nav() {
     login_div.style.display = "none";
     register_div.style.display = "none";
     settings_div.style.display = "none";
-    game_div.style.display = "block";
-    SetSettings();
-   
+    game_div.style.display = "block";   
+    
 }
 

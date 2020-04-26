@@ -313,6 +313,7 @@
                                     </td>
                                 </tr>
                             </table>
+                            <label id="ButtonError" style="display: none;">Must be diffrent buttons</label>
                         </div>
                         <div class="grid-item-BallsAndShiftButtuns">
                             <label type="BallsAndShift">Set balls colors:</label>
@@ -320,7 +321,7 @@
                                 <tr>
                                     <td>Amount:</td>
                                     <td>
-                                        <input type="number" id="amount" name="tentacles" min="50" max="90" required="">
+                                        <input type="number" id="amountBalls" name="tentacles" min="50" max="90" required="">
                                     </td>
                                 </tr>
                             </table>
@@ -328,14 +329,14 @@
                             <table>
                                 <td>5 point:</td>
                                 <td>
-                                    <select onchange="pictureChange5Point(event)">
+                                    <select id="5Point" onchange="pictureChange5Point(event)">
                                         <option value="Azure">Azure</option>
                                         <option value="Blue">Blue</option>
                                         <option value="Brown">Brown</option>
                                         <option value="Gray">Gray</option>
                                         <option value="Green">Green</option>
                                         <option value="Pink">Pink</option>
-                                        <option value="Red">Read</option>
+                                        <option value="Red">Red</option>
                                         <option value="Yellow">Yellow</option>
                                         <option value="Purple">Purple</option>
                                     </select>
@@ -344,14 +345,14 @@
                                     <img id="image1" style="width: 30px; height:30px;"></tr>
                                     <td>15 point:</td>
                                     <td>
-                                        <select onchange="pictureChange15Point(event)">
+                                        <select id="15Point" onchange="pictureChange15Point(event)">
                                             <option value="Azure">Azure</option>
                                             <option value="Blue">Blue</option>
                                             <option value="Brown">Brown</option>
                                             <option value="Gray">Gray</option>
                                             <option value="Green">Green</option>
                                             <option value="Pink">Pink</option>
-                                            <option value="Red">Read</option>
+                                            <option value="Red">Red</option>
                                             <option value="Yellow">Yellow</option>
                                             <option value="Purple">Purple</option>
                                         </select>
@@ -361,14 +362,14 @@
                                         </tr>
                                         <td>25 point:</td>
                                         <td>
-                                            <select onchange="pictureChange25Point(event)">
+                                            <select id="25Point" onchange="pictureChange25Point(event)">
                                                 <option value="Azure">Azure</option>
                                                 <option value="Blue">Blue</option>
                                                 <option value="Brown">Brown</option>
                                                 <option value="Gray">Gray</option>
                                                 <option value="Green">Green</option>
                                                 <option value="Pink">Pink</option>
-                                                <option value="Red">Read</option>
+                                                <option value="Red">Red</option>
                                                 <option value="Yellow">Yellow</option>
                                                 <option value="Purple">Purple</option>
                                             </select>
@@ -377,6 +378,7 @@
                                             <img id="image3" style="width: 30px; height:30px;"></tr>
                                             </tr>
                             </table>
+                            <label id="ColorError" style="display: none;">Must be diffrent color</label>
 
                         </div>
                     </div>
@@ -386,24 +388,25 @@
                                 <tr>
                                     <td>Amount of monsters:</td>
                                     <td>
-                                        <input type="number" id="amount" name="tentacles" min="1" max="4" required="">
+                                        <input type="number" id="amountMonsters" name="tentacles" min="1" max="4" required="">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Game Time:</td>
                                     <td>
-                                        <input type="number" id="amount" name="tentacles" min="60" required="">
+                                        <input type="number" id="amountTime" name="tentacles" min="60" required="">
                                     </td>
                                 </tr>
                             </table>
+                            
                         </div>
                     </div>
                     <div class="grid-container-Buttons">
                         <div class="grid-item-Buttons">
-                            <button type="buttonSettings" onclick="applySettings()">Apply Settings</button>
+                            <button type="buttonSettings" onclick="randomSettings()">Random Settings</button>
                         </div>
                         <div class="grid-item-Buttons">
-                            <button type="buttonSettings" onclick="randomSettings()">Random Settings</button>
+                            <button type="buttonSettings" onclick="applySettings()">Apply Settings</button>
                         </div>
                     </div>
                 </form>
@@ -416,30 +419,40 @@
     </script>
 
     <script>
+        var keyUp="";
+        var keyDown="";
+        var keyRight="";
+        var keyLeft="";
+
+
         $("#upTarget").keydown(function(event) {
             if (checkKeyIsValid(event.which)) {
-                var keyName = event.key;
+                keyName = event.key;
+                keyUp= event.keyCode;
                 document.getElementById("upTarget").value = keyName;
             }
 
         });
         $("#downTarget").keydown(function(event) {
             if (checkKeyIsValid(event.which)) {
-                var keyName = event.key;
+                keyName = event.key;
+                keyDown = event.keyCode;
                 document.getElementById("downTarget").value = keyName;
             }
 
         });
         $("#rigthTarget").keydown(function(event) {
             if (checkKeyIsValid(event.which)) {
-                var keyName = event.key;
+                keyName = event.key;
+                keyRight = event.keyCode;
                 document.getElementById("rigthTarget").value = keyName;
             }
 
         });
         $("#leftTarget").keydown(function(event) {
             if (checkKeyIsValid(event.which)) {
-                var keyName = event.key;
+                keyName = event.key;
+                keyLeft = event.keyCode;
                 document.getElementById("leftTarget").value = keyName;
             }
 
@@ -456,7 +469,6 @@
             return false;
         });
     </script>
-
     <script>
         // Get the modal
         var modal = document.getElementById("AboutDiv");

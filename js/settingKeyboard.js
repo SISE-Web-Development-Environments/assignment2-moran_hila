@@ -1,3 +1,14 @@
+var moveUp;
+var moveDown;
+var moveRight;
+var moveLeft;
+var amountMon;
+var amountTime;
+var amountBalls;
+var point5;
+var point15;
+var point25;
+
 function checkKeyIsValid(key) {
     if (37 <= key && key <= 40) {
         return true;
@@ -9,7 +20,6 @@ function checkKeyIsValid(key) {
         return false;
     }
 }
-
 function pictureChange5Point (event) {
     if (event.target.value == "Azure") {
         document.getElementById("image1").src = "css/picturesOfBalls/AzureBall.png";
@@ -70,6 +80,196 @@ function pictureChange25Point (event) {
     } else if (event.target.value == "Yellow") {
         document.getElementById("image3").src = "css/picturesOfBalls/YellowBall.png";
     } else if (event.target.value == "Purple") {
+        document.getElementById("image3").src = "css/picturesOfBalls/PurpleBall.png";
+    }
+}
+
+function setElements(){
+    moveUp = document.getElementById("upTarget");
+    moveDown = document.getElementById("downTarget");
+    moveRight = document.getElementById("rigthTarget");
+    moveLeft= document.getElementById("leftTarget");
+    amountMon= document.getElementById("amountMonsters");
+    amountTime = document.getElementById("amountTime");
+    amountBalls = document.getElementById("amountBalls");
+    point5 = document.getElementById("5Point");
+    point15 = document.getElementById("15Point");
+    point25 = document.getElementById("25Point");
+}
+
+function applySettings(event){
+    setElements();
+    if(!checkValidButton()){
+        document.getElementById("ButtonError").style.display="block";
+        document.getElementById("ButtonError").style.color="red";
+        document.getElementById("ButtonError").style.backgroundColor="black";
+
+    }
+    else{
+        document.getElementById("ButtonError").style.display="none";
+    }
+    
+    if(!checkValidBallsColors()){
+        document.getElementById("ColorError").style.display="block";
+        document.getElementById("ColorError").style.color="red"
+        document.getElementById("ColorError").style.backgroundColor="black";
+    }
+    else{
+        document.getElementById("ColorError").style.display="none";
+
+    }
+
+    if(checkValidButton() && checkValidBallsColors() ){
+        game_nav();
+    }
+}
+
+function checkValidButton(){
+    if( moveUp.value != moveDown.value &&
+        moveUp.value != moveLeft.value &&
+        moveUp.value != moveRight.value &&
+        moveDown.value != moveLeft.value &&
+        moveDown.value != moveRight.value &&
+        moveRight.value != moveLeft.value ) {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+function checkValidBallsColors(){
+    if( point5.value != point15.value &&
+        point5.value != point25.value &&
+        point15.value != point25.value){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+function randomSettings(){
+    document.getElementById("upTarget").value = "ArrowUp";
+    document.getElementById("downTarget").value = "ArrowDown";
+    document.getElementById("rigthTarget").value = "ArrowRigth";
+    document.getElementById("leftTarget").value = "ArrowLeft";
+    document.getElementById("amountMonsters").value = Math.floor(Math.random() * 4) + 1;
+    document.getElementById("amountBalls").value = Math.floor(Math.random() * 41) + 50;
+    document.getElementById("amountTime").value = Math.floor(Math.random() * 100000) + 60;
+    let num1=Math.floor(Math.random() * 9) + 1;
+    let num2=Math.floor(Math.random() * 9) + 1;
+    let num3=Math.floor(Math.random() * 9) + 1;
+    let color1=randomColor(num1);
+    document.getElementById("5Point").value = color1;
+    pictureChange5PointRandom(color1);
+    while(num1==num2){
+        num2=Math.floor(Math.random() * 9) + 1;
+    }
+    let color2=randomColor(num2);
+    document.getElementById("15Point").value = color2;
+    pictureChange15PointRandom(color2);
+    while(num3==num2 || num1==num3){
+        num3=Math.floor(Math.random() * 9) + 1;
+    }
+    let color3=randomColor(num3);
+    document.getElementById("25Point").value = color3;
+    pictureChange25PointRandom(color3);
+    setElements();
+}
+
+
+function randomColor (number) {
+    if(number==1){
+        return "Azure";
+    }
+    else if( number==2 ){
+        return "Blue";
+    }
+    else if( number==3 ){
+        return "Gray";
+    }
+    else if( number==4 ){
+        return "Brown";
+    }
+    else if( number==5 ){
+        return "Green";
+    }
+    else if( number==6 ){
+        return "Pink";
+    }
+    else if( number==7 ){
+        return "Red";
+    }
+    else if( number==8 ){
+        return "Yellow";
+    }
+    else if( number==9 ){
+        return "Purple";
+    }
+
+}
+
+function pictureChange5PointRandom (color) {
+    if (color == "Azure") {
+        document.getElementById("image1").src = "css/picturesOfBalls/AzureBall.png";
+    } else if (color == "Blue") {
+        document.getElementById("image1").src = "css/picturesOfBalls/BlueBall.png";
+    } else if (color == "Brown") {
+        document.getElementById("image1").src = "css/picturesOfBalls/BrownBall.png";
+    } else if (color == "Green") {
+        document.getElementById("image1").src = "css/picturesOfBalls/GreenBall.png";
+    } else if (color== "Pink") {
+        document.getElementById("image1").src = "css/picturesOfBalls/PinkBall.png";
+    } else if (color == "Red") {
+        document.getElementById("image1").src = "css/picturesOfBalls/RedBall.png";
+    } else if (color == "Yellow") {
+        document.getElementById("image1").src = "css/picturesOfBalls/YellowBall.png";
+    } else if (color == "Purple") {
+        document.getElementById("image1").src = "css/picturesOfBalls/PurpleBall.png";
+    } else if (color == "Gray") {
+        document.getElementById("image1").src = "css/picturesOfBalls/GrayBall.png";
+    }
+}
+function pictureChange15PointRandom(color) {
+    if (color == "Azure") {
+        document.getElementById("image2").src = "css/picturesOfBalls/AzureBall.png";
+    } else if (color == "Blue") {
+        document.getElementById("image2").src = "css/picturesOfBalls/BlueBall.png";
+    } else if (color == "Brown") {
+        document.getElementById("image2").src = "css/picturesOfBalls/BrownBall.png";
+    } else if (color == "Green") {
+        document.getElementById("image2").src = "css/picturesOfBalls/GreenBall.png";
+    } else if (color == "Pink") {
+        document.getElementById("image2").src = "css/picturesOfBalls/PinkBall.png";
+    } else if (color == "Red") {
+        document.getElementById("image2").src = "css/picturesOfBalls/RedBall.png";
+    } else if (color == "Yellow") {
+        document.getElementById("image2").src = "css/picturesOfBalls/YellowBall.png";
+    } else if (color == "Purple") {
+        document.getElementById("image2").src = "css/picturesOfBalls/PurpleBall.png";
+    } else if (color == "Gray") {
+        document.getElementById("image2").src = "css/picturesOfBalls/GrayBall.png";
+    }
+}
+function pictureChange25PointRandom (color) {
+    if (color == "Azure") {
+        document.getElementById("image3").src = "css/picturesOfBalls/AzureBall.png";
+    } else if (color == "Blue") {
+        document.getElementById("image3").src = "css/picturesOfBalls/BlueBall.png";
+    } else if (color == "Gray") {
+        document.getElementById("image3").src = "css/picturesOfBalls/GrayBall.png";
+    } else if (color == "Brown") {
+        document.getElementById("image3").src = "css/picturesOfBalls/BrownBall.png";
+    } else if (color == "Green") {
+        document.getElementById("image3").src = "css/picturesOfBalls/GreenBall.png";
+    } else if (color == "Pink") {
+        document.getElementById("image3").src = "css/picturesOfBalls/PinkBall.png";
+    } else if (color == "Red") {
+        document.getElementById("image3").src = "css/picturesOfBalls/RedBall.png";
+    } else if (color == "Yellow") {
+        document.getElementById("image3").src = "css/picturesOfBalls/YellowBall.png";
+    } else if (color == "Purple") {
         document.getElementById("image3").src = "css/picturesOfBalls/PurpleBall.png";
     }
 }
