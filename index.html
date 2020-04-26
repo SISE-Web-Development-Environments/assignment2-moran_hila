@@ -2,34 +2,35 @@
 <html>
 
 <head>
+    <!--CSS-File-->
     <link rel="stylesheet" type="text/css" href="css/Main.css">
     <link rel="stylesheet" type="text/css" href="css/Menu.css">
     <link rel="stylesheet" type="text/css" href="css/Welcome.css">
     <link rel="stylesheet" type="text/css" href="css/Register.css">
     <link rel="stylesheet" type="text/css" href="css/Setting.css">
-
-    <link rel="stylesheet" type="text/css" href="css/about.css">
-
+    <!--JC-File-->
     <script type="text/javascript" src="js/menuNav.js"></script>
-	<script type="text/javascript" src="js/app.js"></script>
-	<script type="text/javascript" src="js/settingKeyboard.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/settingKeyboard.js"></script>
     <script type="text/javascript" src="js/usersContainer.js"></script>
-    <script type="text/javascript" src="js/about.js"></script>
 
-    <script src="js/modernizr.custom.js"></script>
+    <script src="js/modernizr.custom.js"></script> <!--need??-->
     <script src="js/jquery-3.4.1.slim.min.js"></script>
     <script src="js/jquery.validate.js"></script>
-    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 
 <body>
     <!--Menu-->
     <nav>
         <ul class="MenuBar">
+            <li> <img type="logoImg" src="css/packman2.jpg" ></li>
             <li> <a href="#" onclick="welcame()">    Welcome     </a></li>
             <li> <a href="#" onclick="register()">   Register    </a></li>
             <li> <a href="#" onclick="login()">      Login       </a></li>
-            <li> <a href="#" class="toggle">   About       </a></li>
+            <li> <a href="#" id="myBtn">   About       </a></li>
         </ul>
     </nav>
 
@@ -38,10 +39,10 @@
         <div class="Welcome-container">
             <div class="Welcome-frame">
                 <form class="Welcome-form">
-                    <span class="Welcome-form-title">Welcome to Hila and Moran Packman</span>
+                    <span class="Welcome-form-title">Welcome to Hila and Moran Pac-Man</span>
                     <ul class="buttons">
                         <button type="buttonWelcome" id="register" onclick="register()">Sign Up</button>
-                        <button type="buttonWelcome" id="login" onclick="login()" >Log in</button>
+                        <button type="buttonWelcome" id="login" onclick="login()">Log in</button>
                     </ul>
                 </form>
             </div>
@@ -59,16 +60,16 @@
                             <ul class="Register-ul">
                                 <label for="Username"><b>User name:     </b></label>
                                 <input id="Username" class="text" type="text" name="Username" placeholder="User name" required="">
-								<label for="FirstName"><b>First name:     </b></label>
-								<input id="FirstName" type="text" name="First name" placeholder="First name" required="">
-								<label for="LastName"><b>Last name:     </b></label>
-								<input id="LastName" type="text" name="Last name" placeholder="Last name" required="">
+                                <label for="FirstName"><b>First name:     </b></label>
+                                <input id="FirstName" type="text" name="First name" placeholder="First name" required="">
+                                <label for="LastName"><b>Last name:     </b></label>
+                                <input id="LastName" type="text" name="Last name" placeholder="Last name" required="">
                                 <label for="Email"><b>Email:        </b></label>
                                 <input id="Email" class="text email" type="email" name="email" placeholder="Email" required="">
                                 <label for="Password"><b>Password:      </b></label>
                                 <input id="Password" type="password" name="password" placeholder="Password" required="" data-validation="length alphanumeric">
                                 <label for="Password"><b>Confirm Password:      </b></label>
-								<input id="ConfirmPassword" class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
+                                <input id="ConfirmPassword" class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
                                 <label><b>Birth Date:        </b></label>
                                 <select id="days" name="day">
                                     <option value="1">1</option>
@@ -222,30 +223,45 @@
 
     <!--LoginDiv-->
     <div id="LoginDiv">
-		<div class="Register-container"> 
+        <div class="Register-container">
             <div class="Register-frame">
                 <div class="Register-form">
                     <span class="Register-form-title">Login:</span>
                     <form action="#" method="login">
-						<div class="imgcontainer">
-							<center><img src="css/img_avatar2.png" alt="Avatar" class="avatar" width="250" height="250"></center>
-						</div>
-						  <div class="container">
-							<label for="uname" class="label"><b>Username</b></label>
-							<input type="text" placeholder="Enter Username" name="uname" required="">
-							<label for="psw" class="label"><b>Password</b></label>
-							<input type="password" placeholder="Enter Password" name="psw" required="">
-							<button type="buttonRegister">Login</button>
-						  </div>
+                        <div class="imgcontainer">
+                            <center><img src="css/img_avatar2.png" alt="Avatar" class="avatar" width="250" height="250"></center>
+                        </div>
+                        <div class="container">
+                            <label for="uname" class="label"><b>Username</b></label>
+                            <input type="text" placeholder="Enter Username" name="uname" required="">
+                            <label for="psw" class="label"><b>Password</b></label>
+                            <input type="password" placeholder="Enter Password" name="psw" required="">
+                            <button type="buttonRegister">Login</button>
+                        </div>
                     </form>
-				</div>
-			</div>
-		</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!--AboutDiv-->
-    <div id="AboutDiv">
-          
+    <div id="AboutDiv" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>About:</h2>
+            </div>
+            <div class="modal-body">
+                <p> Content creators on this page:
+                    </br>
+                    Hila Cohen and Moran Chery
+                    </br>
+                </p>
+                <img type="aboutImg" src="css/packman2.jpg" >
+        
+            </div>
+
+        </div>
     </div>
 
     <!--GameDiv-->
@@ -394,50 +410,83 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         welcame();
     </script>
-    
-	<script>
-		$("#upTarget").keydown(function(event) {
-			if (checkKeyIsValid(event.which)) {
-				var keyName = event.key;
-				document.getElementById("upTarget").value = keyName;
-			}
-	
-		});
-		$("#downTarget").keydown(function(event) {
-			if (checkKeyIsValid(event.which)) {
-				var keyName = event.key;
-				document.getElementById("downTarget").value = keyName;
-			}
-	
-		});
-		$("#rigthTarget").keydown(function(event) {
-			if (checkKeyIsValid(event.which)) {
-				var keyName = event.key;
-				document.getElementById("rigthTarget").value = keyName;
-			}
-	
-		});
-		$("#leftTarget").keydown(function(event) {
-			if (checkKeyIsValid(event.which)) {
-				var keyName = event.key;
-				document.getElementById("leftTarget").value = keyName;
-			}
-	
-		});
+
+    <script>
+        $("#upTarget").keydown(function(event) {
+            if (checkKeyIsValid(event.which)) {
+                var keyName = event.key;
+                document.getElementById("upTarget").value = keyName;
+            }
+
+        });
+        $("#downTarget").keydown(function(event) {
+            if (checkKeyIsValid(event.which)) {
+                var keyName = event.key;
+                document.getElementById("downTarget").value = keyName;
+            }
+
+        });
+        $("#rigthTarget").keydown(function(event) {
+            if (checkKeyIsValid(event.which)) {
+                var keyName = event.key;
+                document.getElementById("rigthTarget").value = keyName;
+            }
+
+        });
+        $("#leftTarget").keydown(function(event) {
+            if (checkKeyIsValid(event.which)) {
+                var keyName = event.key;
+                document.getElementById("leftTarget").value = keyName;
+            }
+
+        });
     </script>
     <script>
-        $("#register").click(function () { 
+        $("#register").click(function() {
             register();
-        return false; 
+            return false;
         });
 
-        $("#login").click(function () { 
+        $("#login").click(function() {
             login();
-        return false; 
+            return false;
+        });
+    </script>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("AboutDiv");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        $(document).keydown(function(event) { 
+            if (event.keyCode == 27) { 
+            $('#AboutDiv').hide();
+            }
         });
     </script>
 

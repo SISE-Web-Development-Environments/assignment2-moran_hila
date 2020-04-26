@@ -12,7 +12,7 @@ function welcame() {
     register_div.style.display = "none";
     settings_div.style.display = "block";       //  NeedToChangTO: none
     game_div.style.display = "none";
-    about_div.style.display = "block";
+  
 }
 
 function login() {
@@ -28,7 +28,7 @@ function login() {
     register_div.style.display = "none";
     settings_div.style.display = "none";
     game_div.style.display = "none";
-    about_div.style.display = "block";
+    
 }
 
 function register() {
@@ -44,7 +44,7 @@ function register() {
     register_div.style.display = "block";
     settings_div.style.display = "none";
     game_div.style.display = "none";
-    about_div.style.display = "block";
+   
 }
 
 
@@ -62,8 +62,6 @@ function about() {
     register_div.style.display = "none";
     settings_div.style.display = "none";
     game_div.style.display = "none";
-    about_div.style.display = "block";
-
     
 }
 
@@ -81,7 +79,6 @@ function settings_nav() {
     register_div.style.display = "none";
     settings_div.style.display = "block";
     game_div.style.display = "none";
-    about_div.style.display = "block";
 }
 
 
@@ -98,23 +95,7 @@ function game_nav() {
     register_div.style.display = "none";
     settings_div.style.display = "none";
     game_div.style.display = "block";
-    about_div.style.display = "block";
     SetSettings();
    
 }
 
-$(document).ready(function () {
-    $('.modal-toggle').on('click', function(e) {
-        e.preventDefault();
-        $('.modal').toggleClass('is-visible');
-        addEventListener('keydown', function(e) {
-            var code = e.keyCode || e.which;
-            var mdl=$('.modal').attr('class');
-            if (code == 27 && mdl==='modal is-visible')
-            {
-                e.preventDefault();
-                $(".modal").toggleClass('is-visible');
-            }
-        });
-    });
-});
