@@ -2,16 +2,19 @@
 <html>
 
 <head>
-    <script src="js/modernizr.custom.js"></script> <!--need??-->
     <script src="js/jquery-3.4.1.slim.min.js"></script>
     <script src="js/jquery.validate.js"></script>
+
     <!--CSS-File-->
     <link rel="stylesheet" type="text/css" href="css/Main.css">
     <link rel="stylesheet" type="text/css" href="css/Menu.css">
     <link rel="stylesheet" type="text/css" href="css/Welcome.css">
     <link rel="stylesheet" type="text/css" href="css/Register.css">
     <link rel="stylesheet" type="text/css" href="css/Setting.css">
+    <link rel="stylesheet" type="text/css" href="css/game.css">
+
     <!--JC-File-->
+
     <script language=javascript src="js/usersContainer.js"></script>
     <script language=javascript src="js/menuNav.js"></script>
     <script language=javascript src="js/app.js"></script>
@@ -34,7 +37,7 @@
             <li> <a id="myBtn" onclick="about()">   About       </a></li>
         </ul>
     </nav>
-
+    
     <!--WelcomeDiv-->
     <div id="WelcomeDiv">
         <div class="Welcome-container">
@@ -49,7 +52,7 @@
             </div>
         </div>
     </div>
-
+    
     <!--RegisterDiv-->
     <div id="RegisterDiv">
         <div class="Register-container">
@@ -235,7 +238,7 @@
                             <input id="usernameId" type="text" placeholder="Enter Username" name="uname" required>
                             <label for="psw" class="label"><b>Password</b></label>
                             <input id="passwordId" type="password" placeholder="Enter Password" name="psw" required>
-                            <button type="button" onclick="loginGame()"  id="loginSubmit">Login</button>
+                            <button type="button" onclick="loginSettings()"  id="loginSubmit">Login</button>
                         </div>
                     </form>
                 </div>
@@ -265,22 +268,30 @@
 
     <!--GameDiv-->
     <div id="GameDiv">
+        
         <div class="grid">
             <div class="gameSetting">
-            </div>
-
-            <div class="game">
+                <div class="UserNameDiv" >  
+                    <p id="userName"> </p>
+                </div>
                 <div id="scoreDiv">
                     <label for="lblScore">SCORE:</label>
                     <input id="lblScore" type="text" />
                 </div>
+
                 <div id="timeDiv">
                     <label for="lblTime">TIME:</label>
                     <input id="lblTime" type="text" />
                 </div>
+
+            </div>
+
+            <div class="game">
+                
                 <div id="gameDiv">
-                    <canvas id="canvas" height="600" width="600"></canvas>
+                    <canvas id="canvas" height="540" width="540"></canvas>
                 </div>
+
             </div>
 
         </div>
@@ -402,6 +413,13 @@
             </div>
         </div>
     </div>
+
+    <footer>
+        <span>© This project is one of the assignments in Web Development Environments course of BGU
+            UNIVERSITY - April 2020.<br></span>
+        <a href="mailto:moran_hila@pac-man.com">contact us!</a>
+    </footer>
+
     <script>
         welcome()
     </script>

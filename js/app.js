@@ -12,6 +12,10 @@ $(document).ready(function() {
 	Start();
 });
 
+function init(){
+
+}
+
 function Start() {
 	board = new Array();
 	score = 0;

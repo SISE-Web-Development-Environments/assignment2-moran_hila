@@ -19,24 +19,24 @@ function listener_changingKeysByUser() {
     let key1 =event.key.toUpperCase();
     if(checkKeyIsValidLetterAndNumber(event.which)){
         document.getElementById("keyleft").value =key1;
-        moveLeft= key.which;
+        moveLeft= event.which;
     }
     else if(event.which==37){
         document.getElementById("keyleft").value ="Left";
-        moveLeft= key.which;
+        moveLeft= event.which;
         
     }
     else if(event.which==38){
         document.getElementById("keyleft").value ="Up";
-        moveLeft= key.which;
+        moveLeft= event.which;
     }
     else if(event.which==39){
         document.getElementById("keyleft").value ="Right";
-        moveLeft= key.which;
+        moveLeft= event.which;
     }
     else if(event.which==40){
         document.getElementById("keyleft").value ="Down";
-        moveLeft= key.which;
+        moveLeft= event.which;
     }
 
     });
@@ -45,24 +45,24 @@ function listener_changingKeysByUser() {
         let key2 =event.key.toUpperCase();
     if(checkKeyIsValidLetterAndNumber(event.which)){
         document.getElementById("keyright").value =key2;
-        moveRight= key.which;
+        moveRight= event.which;
     }
     else if(event.which==37){
         document.getElementById("keyright").value ="Left";
-        moveRight= key.which;
+        moveRight= event.which;
         
     }
     else if(event.which==38){
         document.getElementById("keyright").value ="Up";
-        moveRight= key.which;
+        moveRight= event.which;
     }
     else if(event.which==39){
         document.getElementById("keyright").value ="Right";
-        moveRight= key.which;
+        moveRight= event.which;
     }
     else if(event.which==40){
         document.getElementById("keyright").value ="Down";
-        moveRight= key.which;
+        moveRight= event.which;
     }
     });
 
@@ -70,24 +70,24 @@ function listener_changingKeysByUser() {
         let key3 =event.key.toUpperCase();
         if(checkKeyIsValidLetterAndNumber(event.which)){
             document.getElementById("keyup").value =key3;
-            moveUp= key.which;
+            moveUp= event.which;
         }
         else if(event.which==37){
             document.getElementById("keyup").value ="Left";
-            moveUp= key.which;
+            moveUp= event.which;
             
         }
         else if(event.which==38){
             document.getElementById("keyup").value ="Up";
-            moveUp= key.which;
+            moveUp= event.which;
         }
         else if(event.which==39){
             document.getElementById("keyup").value ="Right";
-            moveUp= key.which;
+            moveUp= event.which;
         }
         else if(event.which==40){
             document.getElementById("keyup").value ="Down";
-            moveUp= key.which;
+            moveUp= event.which;
         }
     });
 
@@ -95,24 +95,24 @@ function listener_changingKeysByUser() {
         let key3 =event.key.toUpperCase();
         if(checkKeyIsValidLetterAndNumber(event.which)){
             document.getElementById("keydown").value =key3;
-            moveDown= key.which;
+            moveDown= event.which;
         }
         else if(event.which==37){
             document.getElementById("keydown").value ="Left";
-            moveDown= key.which;
+            moveDown= event.which;
             
         }
         else if(event.which==38){
             document.getElementById("keydown").value ="Up";
-            moveDown= key.which;
+            moveDown= event.which;
         }
         else if(event.which==39){
             document.getElementById("keydown").value ="Right";
-            moveDown= key.which;
+            moveDown= event.which;
         }
         else if(event.which==40){
             document.getElementById("keydown").value ="Down";
-            moveDown= key.which;
+            moveDown= event.which;
         }
     });
 }

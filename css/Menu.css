@@ -3,7 +3,7 @@ nav
   position: fixed;
   top: 0;
   left: 0;
-  height: 80px;
+  height: 70px;
   width: 100%;
   box-shadow: 1px 1px 15px silver;
   z-index: 1;
@@ -16,7 +16,7 @@ nav ul.MenuBar{
   position: absolute;
   top: 0;
   display: flex;
-  line-height: 80px;
+  line-height: 25px;
   margin-right: 50px;
   list-style-type: none;
   font-size: 16px;
@@ -24,7 +24,7 @@ nav ul.MenuBar{
 }
 
 nav ul.MenuBar li{
-  margin: 0 5px;
+  margin: 0 1px;
 }
 
 nav ul.MenuBar li:hover a{

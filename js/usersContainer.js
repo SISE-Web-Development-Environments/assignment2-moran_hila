@@ -1,6 +1,7 @@
 var userP = {Username:'p', FirstName:'p', LastName:"p", Email:"p@gmail.com" ,Password:'p',day:"15",month:"4",year:"1999"};
 var usersArray=[];
 usersArray.push(userP);
+var userFullName;
 
 $(document).ready(function () {
     jQuery.validator.addMethod("alphanumeric", function(value, element) {
@@ -53,10 +54,11 @@ function registerIn(){
         form.reset();
 }
 
-function loginGame(){
-    var Usermname = document.getElementById("usernameId").value;
+function loginSettings(){
+    var Username = document.getElementById("usernameId").value;
         var Password = document.getElementById("passwordId").value;
-        if(isExist(Usermname,Password)==true){
+        if(isExist(Username,Password)==true){
+            document.getElementById("userName").innerHTML = "Welcome: "+getFullName(Username);
             settings_nav();
         }
         else{
@@ -64,6 +66,18 @@ function loginGame(){
             login();
         }
 }
+
+function getFullName(username) {
+    var userFullName="";
+    var i;
+    for (i = 0; i < usersArray.length; i++) {
+        if(usersArray[i].Username == username){
+            userFullName = usersArray[i].FirstName +" "+usersArray[i].LastName;
+            return userFullName;
+        }
+    }
+}
+
 
 function isExist(name,pass){
     var i;

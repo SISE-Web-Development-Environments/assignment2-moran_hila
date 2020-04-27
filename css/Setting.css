@@ -58,8 +58,6 @@ button[type=button]:hover {
 background: rgba(255, 255, 255, 0.479);
 }
 
-
-
 .grid-container-BallsAndShiftButtuns {
     display: grid;
     grid-template-columns: auto;
@@ -76,17 +74,7 @@ background: rgba(255, 255, 255, 0.479);
     grid-template-columns: auto auto;
     padding: 5px;
   }
-  .grid{
-    width: 90%;
-    margin-top: 8%;
-    grid-template-columns: 70% 30%;
-  }
-
-  .game{
-    margin-top: 3%;
-    margin-left: 3%;
-  }
-  
+    
   .grid-item-BallsAndShiftButtuns {
     padding: 5px;
     margin: auto;
@@ -160,15 +148,14 @@ background: rgba(255, 255, 255, 0.479);
   display: inline-block;
   transition: box-shadow 0.3s ease, transform 0.15s ease;
   box-shadow: 0 0 1px #888,0 1px 0 #fff, 0 6px 0 #C0C0C0, 0 8px 17px rgba(#444, 0.4), 2px 1px 4px rgba(#444, 0.25), -2px 1px 4px rgba(#444, 0.25), 0 9px 16px rgba(#444, 0.1);
-  
-  &:hover,
-  &:focus {
+}
+
+.key__button :hover:focus {
     box-shadow: 0 0 1px #888,0 1px 0 #fff, 0 4px 0 #C0C0C0, 0 2px 35px rgba(#444, 0.3), 2px 2px 4px rgba(#444, 0.25), -2px 2px 4px rgba(#444, 0.25), 0 7px 4px rgba(#444, 0.1);
     transform: translateY(2px);
   }
   
-  &:active {
+  .key__button :active {
     box-shadow: 0 0 1px #888,0 1px 0 #fff, 0 0 0 #C0C0C0, 0 0px 30px rgba(#444, 0.15), 2px 2px 4px rgba(#444, 0.25), -2px 2px 4px rgba(#444, 0.25), 0 0px 4px rgba(#444, 0.25);
     transform: translateY(4px); 
   }
-}
