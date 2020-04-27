@@ -1,5 +1,5 @@
 
-function welcame() {
+function welcome() {
     var welcome_div = document.getElementById("WelcomeDiv");
     var login_div = document.getElementById("LoginDiv");
     var register_div = document.getElementById("RegisterDiv");
@@ -12,7 +12,6 @@ function welcame() {
     register_div.style.display = "none";
     settings_div.style.display = "block";       //  NeedToChangTO: none
     game_div.style.display = "none";
-  
 }
 
 function login() {
@@ -83,6 +82,7 @@ function settings_nav() {
 
 
 function game_nav() {
+    alert("get to game nav");
     var welcome_div = document.getElementById("WelcomeDiv");
     var login_div = document.getElementById("LoginDiv");
     var register_div = document.getElementById("RegisterDiv");

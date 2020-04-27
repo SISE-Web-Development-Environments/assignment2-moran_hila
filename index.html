@@ -2,6 +2,9 @@
 <html>
 
 <head>
+    <script src="js/modernizr.custom.js"></script> <!--need??-->
+    <script src="js/jquery-3.4.1.slim.min.js"></script>
+    <script src="js/jquery.validate.js"></script>
     <!--CSS-File-->
     <link rel="stylesheet" type="text/css" href="css/Main.css">
     <link rel="stylesheet" type="text/css" href="css/Menu.css">
@@ -9,17 +12,12 @@
     <link rel="stylesheet" type="text/css" href="css/Register.css">
     <link rel="stylesheet" type="text/css" href="css/Setting.css">
     <!--JC-File-->
-    <script type="text/javascript" src="js/menuNav.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/settingKeyboard.js"></script>
-    <script type="text/javascript" src="js/usersContainer.js"></script>
-
-    <script src="js/modernizr.custom.js"></script> <!--need??-->
-    <script src="js/jquery-3.4.1.slim.min.js"></script>
-    <script src="js/jquery.validate.js"></script>
+    <script language=javascript src="js/usersContainer.js"></script>
+    <script language=javascript src="js/menuNav.js"></script>
+    <script language=javascript src="js/app.js"></script>
+    <script language=javascript src="js/settingKeyboard.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
 </head>
 
 <body>
@@ -27,10 +25,10 @@
     <nav>
         <ul class="MenuBar">
             <li> <img type="logoImg" src="css/packman2.jpg" ></li>
-            <li> <a href="#" onclick="welcame()">    Welcome     </a></li>
-            <li> <a href="#" onclick="register()">   Register    </a></li>
-            <li> <a href="#" onclick="login()">      Login       </a></li>
-            <li> <a href="#" id="myBtn">   About       </a></li>
+            <li> <a onclick="welcome()">    Welcome     </a></li>
+            <li> <a onclick="register()">   Register    </a></li>
+            <li> <a onclick="login()">      Login       </a></li>
+            <li> <a id="myBtn">   About       </a></li>
         </ul>
     </nav>
 
@@ -41,8 +39,8 @@
                 <form class="Welcome-form">
                     <span class="Welcome-form-title">Welcome to Hila and Moran Pac-Man</span>
                     <ul class="buttons">
-                        <button type="buttonWelcome" id="register" onclick="register()">Sign Up</button>
-                        <button type="buttonWelcome" id="login" onclick="login()">Log in</button>
+                        <a type="buttonWelcome" id="register" onclick="register()">Sign Up</a>
+                        <a type="buttonWelcome" id="login" onclick="login()">Log in</a>
                     </ul>
                 </form>
             </div>
@@ -55,23 +53,21 @@
             <div class="Register-frame">
                 <div class="Register-form">
                     <span class="Register-form-title">Register:</span>
-                    <form action="#" method="register" name="registerForm" id="RegisterForm">
+                    <form id="RegisterForm">
                         <div class="database">
                             <ul class="Register-ul">
                                 <label for="Username"><b>User name:     </b></label>
-                                <input id="Username" class="text" type="text" name="Username" placeholder="User name" required="">
+                                <input id="Username_rgs" class="text" type="text" name="Username" placeholder="User name" required>
                                 <label for="FirstName"><b>First name:     </b></label>
-                                <input id="FirstName" type="text" name="First name" placeholder="First name" required="">
+                                <input id="FirstName_" type="text" name="FirstName" placeholder="First name" required>
                                 <label for="LastName"><b>Last name:     </b></label>
-                                <input id="LastName" type="text" name="Last name" placeholder="Last name" required="">
+                                <input id="LastName_" type="text" name="LastName" placeholder="Last name" required=>
                                 <label for="Email"><b>Email:        </b></label>
-                                <input id="Email" class="text email" type="email" name="email" placeholder="Email" required="">
+                                <input id="Email_" class="text email" type="email" name="Email" placeholder="Email" required>
                                 <label for="Password"><b>Password:      </b></label>
-                                <input id="Password" type="password" name="password" placeholder="Password" required="" data-validation="length alphanumeric">
-                                <label for="Password"><b>Confirm Password:      </b></label>
-                                <input id="ConfirmPassword" class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
+                                <input id="Password_" type="password" name="Password" placeholder="Password" required>
                                 <label><b>Birth Date:        </b></label>
-                                <select id="days" name="day">
+                                <select id="day" name="day">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -104,7 +100,7 @@
                                     <option value="30">30</option>
                                     <option value="31">31</option>
                                 </select>/
-                                <select id="months" name="month">
+                                <select id="month" name="month">
                                     <option value="January">January</option>
                                     <option value="Febuary">Febuary</option>
                                     <option value="March">March</option>
@@ -118,7 +114,7 @@
                                     <option value="November">November</option>
                                     <option value="December">December</option>
                                 </select>/
-                                <select id="years" name="year">
+                                <select id="year" name="year">
                                     <option value="2020">2020</option>
                                     <option value="2019">2019</option>
                                     <option value="2018">2018</option>
@@ -213,7 +209,7 @@
                                 </select>
 
                             </ul>
-                            <button type="buttonRegister" value="SIGN UP">SIGN UP</button>
+                            <button type="submit" value="SIGN UP" id="registerSubmit">SIGN UP</button>
                         </div>
                     </form>
                 </div>
@@ -227,16 +223,16 @@
             <div class="Register-frame">
                 <div class="Register-form">
                     <span class="Register-form-title">Login:</span>
-                    <form action="#" method="login">
+                    <form id="LoginForm">
                         <div class="imgcontainer">
                             <center><img src="css/img_avatar2.png" alt="Avatar" class="avatar" width="250" height="250"></center>
                         </div>
                         <div class="container">
                             <label for="uname" class="label"><b>Username</b></label>
-                            <input type="text" placeholder="Enter Username" name="uname" required="">
+                            <input id="usernameId" type="text" placeholder="Enter Username" name="uname" required>
                             <label for="psw" class="label"><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password" name="psw" required="">
-                            <button type="buttonRegister">Login</button>
+                            <input id="passwordId" type="password" placeholder="Enter Password" name="psw" required>
+                            <button type="submit" id="loginSubmit">Login</button>
                         </div>
                     </form>
                 </div>
@@ -413,11 +409,9 @@
             </div>
         </div>
     </div>
-
-    <script>
-        welcame();
-    </script>
-
+<script>
+    welcome()
+</script>
     <script>
         var keyUp="";
         var keyDown="";
@@ -457,8 +451,6 @@
             }
 
         });
-    </script>
-    <script>
         $("#register").click(function() {
             register();
             return false;
@@ -468,8 +460,6 @@
             login();
             return false;
         });
-    </script>
-    <script>
         // Get the modal
         var modal = document.getElementById("AboutDiv");
 
@@ -500,7 +490,7 @@
             $('#AboutDiv').hide();
             }
         });
-    </script>
+     </script>
 
 </body>
 
