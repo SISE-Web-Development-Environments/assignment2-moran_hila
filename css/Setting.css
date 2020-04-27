@@ -1,6 +1,7 @@
 .Settings-container{
+  margin-top: 3%;
   width: 100%; 
-  height: 100%; 
+  height: auto;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -13,7 +14,6 @@
 
 .Settings-form {
   width: 850px;
-  
   background-color: #1e1e1f;
 }
 
@@ -28,12 +28,12 @@
 }
 .Settings-frame{
   margin-top: 5%;
-  margin-bottom: 5%;
+  
   padding: 5px 5px 5px 5px;
   background-color: rgb(137, 142, 150);
 }
 
-button[type=buttonSettings]{
+button[type=button]{
 border: none;
 padding: 0.6em 1em;
 background: black;
@@ -54,7 +54,7 @@ width: 80%;
 font-size: 16px;
 }
 
-button[type=buttonSettings]:hover {
+button[type=button]:hover {
 background: rgba(255, 255, 255, 0.479);
 }
 
@@ -62,51 +62,65 @@ background: rgba(255, 255, 255, 0.479);
 
 .grid-container-BallsAndShiftButtuns {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
     padding: 10px;
 }
   .grid-container-MonsterAndTime {
     display: grid;
-    grid-column-gap: 40px;
-    grid-template-columns: auto;
+    
+    grid-template-columns: auto auto;
     padding: 10px;
   }
   .grid-container-Buttons{
     display: grid;
     grid-template-columns: auto auto;
-    padding: 10px;
+    padding: 5px;
+  }
+  .grid{
+    width: 90%;
+    margin-top: 8%;
+    grid-template-columns: 70% 30%;
+  }
+
+  .game{
+    margin-top: 3%;
+    margin-left: 3%;
   }
   
   .grid-item-BallsAndShiftButtuns {
     padding: 5px;
     margin: auto;
-    background-color: rgba(255, 0, 119, 0.8);
+    background-color: rgba(233, 51, 121, 0.8);
     border: 1px solid white;
     text-align: center;
-    width: 85%;
     height: 100%;
+    width: 50%;
+    
   }
   .grid-item-MonsterAndTime {
     margin: auto;
     align-self: center;
-    background-color: rgba(255, 0, 119, 0.8);
+    background-color: rgba(233, 51, 121, 0.8);
     border: 1px solid white;
     padding: 20px;
-    text-align: center;
+    text-align: lefts;
     font-size: 20px;
+    font-weight: bold;
+    text-decoration: underline;
     font-family: Poppins-Regular;
   }
   .grid-item-Buttons {
     margin: auto;
     align-self: center;
-    padding: 20px;
+    padding: 10px;
     font-size: 30px;
     text-align: center;
   }
 
   label[type=BallsAndShift]{
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
+    text-decoration: underline;
     font-family: Poppins-Regular;
   }
 
@@ -124,6 +138,37 @@ background: rgba(255, 255, 255, 0.479);
     text-decoration: underline;
     font-family: Poppins-Regular;
   }
-  select#gender option[value="male"]   { background-image:url(PicturesOfBalls/AzureBall.png);   }
-  select#gender option[value="female"] { background-image:url(PicturesOfBalls/BlueBall.png); }
-  select#gender option[value="others"] { background-image:url(PicturesOfBalls/BrownBall.png); }
+  
+
+
+.key__button {
+  box-sizing: border-box;
+  font-size: 16px;
+  text-align: center;
+  width: 50px;
+  color: #555;
+  cursor: pointer;
+  margin: 0 8px;
+  height: 50px;
+  border-color: #f2f2f2;
+  border-style: solid;
+  text-shadow: 0 0.5px 1px #777, 0 2px 6px #f2f2f2;
+  border-width: 1px;
+  border-radius: 10px;
+  background: -webkit-linear-gradient(top, #f9f9f9 0%, #D2D2D2 80%, #c0c0c0 100%);
+  font-family: sans-serif;
+  display: inline-block;
+  transition: box-shadow 0.3s ease, transform 0.15s ease;
+  box-shadow: 0 0 1px #888,0 1px 0 #fff, 0 6px 0 #C0C0C0, 0 8px 17px rgba(#444, 0.4), 2px 1px 4px rgba(#444, 0.25), -2px 1px 4px rgba(#444, 0.25), 0 9px 16px rgba(#444, 0.1);
+  
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 1px #888,0 1px 0 #fff, 0 4px 0 #C0C0C0, 0 2px 35px rgba(#444, 0.3), 2px 2px 4px rgba(#444, 0.25), -2px 2px 4px rgba(#444, 0.25), 0 7px 4px rgba(#444, 0.1);
+    transform: translateY(2px);
+  }
+  
+  &:active {
+    box-shadow: 0 0 1px #888,0 1px 0 #fff, 0 0 0 #C0C0C0, 0 0px 30px rgba(#444, 0.15), 2px 2px 4px rgba(#444, 0.25), -2px 2px 4px rgba(#444, 0.25), 0 0px 4px rgba(#444, 0.25);
+    transform: translateY(4px); 
+  }
+}

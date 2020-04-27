@@ -38,12 +38,8 @@ $(document).ready(function () {
     });
   });
 
-
-  $(document).ready(function () {
-    $("#RegisterForm").submit(function(e) {
-        
-        e.preventDefault();
-        var Username = document.getElementById("Username_rgs").value;
+function registerIn(){
+    var Username = document.getElementById("Username_rgs").value;
         var Password = document.getElementById("Password_").value;
         var FirstName = document.getElementById("FirstName_").value;
         var LastName = document.getElementById("LastName_").value;
@@ -52,27 +48,22 @@ $(document).ready(function () {
         var months = document.getElementById("month").value;
         var years = document.getElementById("year").value;
         usersArray.push({Username,FirstName,LastName,Email,Password,days,months, years});
-        alert("registration completed successfully.")
         welcome();
         var form = document.getElementById("RegisterForm")
         form.reset();
-    });
-});
+}
 
-$(document).ready(function () {
-    $("#LoginForm").submit(function(e){
-        var Usermname = document.getElementById("usernameId").value;
+function loginGame(){
+    var Usermname = document.getElementById("usernameId").value;
         var Password = document.getElementById("passwordId").value;
         if(isExist(Usermname,Password)==true){
-            alert("enter to the game");
             settings_nav();
         }
         else{
             alert("wrong input!")
-            welcome();
+            login();
         }
-    });
-});
+}
 
 function isExist(name,pass){
     var i;
@@ -81,7 +72,6 @@ function isExist(name,pass){
          return true;
         }
     }
-    alert("not find user");
     return false;
 }
     

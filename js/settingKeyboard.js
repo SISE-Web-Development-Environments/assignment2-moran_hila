@@ -9,10 +9,116 @@ var point5;
 var point15;
 var point25;
 
-function checkKeyIsValid(key) {
-    if (37 <= key && key <= 40) {
-        return true;
-    } else if (48 <= key && key <= 90) {
+$(document).ready(function () {
+    listener_changingKeysByUser();
+});
+
+function listener_changingKeysByUser() {
+    document.getElementById("keyleft").addEventListener('keydown', function (event) {
+    
+    let key1 =event.key.toUpperCase();
+    if(checkKeyIsValidLetterAndNumber(event.which)){
+        document.getElementById("keyleft").value =key1;
+        moveLeft= key.which;
+    }
+    else if(event.which==37){
+        document.getElementById("keyleft").value ="Left";
+        moveLeft= key.which;
+        
+    }
+    else if(event.which==38){
+        document.getElementById("keyleft").value ="Up";
+        moveLeft= key.which;
+    }
+    else if(event.which==39){
+        document.getElementById("keyleft").value ="Right";
+        moveLeft= key.which;
+    }
+    else if(event.which==40){
+        document.getElementById("keyleft").value ="Down";
+        moveLeft= key.which;
+    }
+
+    });
+
+    document.getElementById("keyright").addEventListener('keydown', function (event) {
+        let key2 =event.key.toUpperCase();
+    if(checkKeyIsValidLetterAndNumber(event.which)){
+        document.getElementById("keyright").value =key2;
+        moveRight= key.which;
+    }
+    else if(event.which==37){
+        document.getElementById("keyright").value ="Left";
+        moveRight= key.which;
+        
+    }
+    else if(event.which==38){
+        document.getElementById("keyright").value ="Up";
+        moveRight= key.which;
+    }
+    else if(event.which==39){
+        document.getElementById("keyright").value ="Right";
+        moveRight= key.which;
+    }
+    else if(event.which==40){
+        document.getElementById("keyright").value ="Down";
+        moveRight= key.which;
+    }
+    });
+
+    document.getElementById("keyup").addEventListener('keydown', function (event) {
+        let key3 =event.key.toUpperCase();
+        if(checkKeyIsValidLetterAndNumber(event.which)){
+            document.getElementById("keyup").value =key3;
+            moveUp= key.which;
+        }
+        else if(event.which==37){
+            document.getElementById("keyup").value ="Left";
+            moveUp= key.which;
+            
+        }
+        else if(event.which==38){
+            document.getElementById("keyup").value ="Up";
+            moveUp= key.which;
+        }
+        else if(event.which==39){
+            document.getElementById("keyup").value ="Right";
+            moveUp= key.which;
+        }
+        else if(event.which==40){
+            document.getElementById("keyup").value ="Down";
+            moveUp= key.which;
+        }
+    });
+
+    document.getElementById("keydown").addEventListener('keydown', function (event) {
+        let key3 =event.key.toUpperCase();
+        if(checkKeyIsValidLetterAndNumber(event.which)){
+            document.getElementById("keydown").value =key3;
+            moveDown= key.which;
+        }
+        else if(event.which==37){
+            document.getElementById("keydown").value ="Left";
+            moveDown= key.which;
+            
+        }
+        else if(event.which==38){
+            document.getElementById("keydown").value ="Up";
+            moveDown= key.which;
+        }
+        else if(event.which==39){
+            document.getElementById("keydown").value ="Right";
+            moveDown= key.which;
+        }
+        else if(event.which==40){
+            document.getElementById("keydown").value ="Down";
+            moveDown= key.which;
+        }
+    });
+}
+
+function checkKeyIsValidLetterAndNumber(key) {
+    if (48 <= key && key <= 90) {
         return true;
     } else if (76 <= key && key <= 105) {
         return true;
@@ -20,6 +126,7 @@ function checkKeyIsValid(key) {
         return false;
     }
 }
+
 function pictureChange5Point (event) {
     if (event.target.value == "Azure") {
         document.getElementById("image1").src = "css/picturesOfBalls/AzureBall.png";
@@ -85,10 +192,10 @@ function pictureChange25Point (event) {
 }
 
 function setElements(){
-    moveUp = document.getElementById("upTarget");
-    moveDown = document.getElementById("downTarget");
-    moveRight = document.getElementById("rigthTarget");
-    moveLeft= document.getElementById("leftTarget");
+    moveUp = document.getElementById("keyup");
+    moveDown = document.getElementById("keydown");
+    moveRight = document.getElementById("keyright");
+    moveLeft= document.getElementById("keyleft");
     amountMon= document.getElementById("amountMonsters");
     amountTime = document.getElementById("amountTime");
     amountBalls = document.getElementById("amountBalls");
@@ -97,13 +204,12 @@ function setElements(){
     point25 = document.getElementById("25Point");
 }
 
-function applySettings(event){
+function applySettings(){
     setElements();
     if(!checkValidButton()){
         document.getElementById("ButtonError").style.display="block";
         document.getElementById("ButtonError").style.color="red";
         document.getElementById("ButtonError").style.backgroundColor="black";
-
     }
     else{
         document.getElementById("ButtonError").style.display="none";
@@ -125,13 +231,14 @@ function applySettings(event){
 }
 
 function checkValidButton(){
+    
     if( moveUp.value != moveDown.value &&
         moveUp.value != moveLeft.value &&
         moveUp.value != moveRight.value &&
         moveDown.value != moveLeft.value &&
         moveDown.value != moveRight.value &&
         moveRight.value != moveLeft.value ) {
-        return true;
+            return true;
     }
     else{
         return false;
@@ -150,10 +257,14 @@ function checkValidBallsColors(){
 }
 
 function randomSettings(){
-    document.getElementById("upTarget").value = "ArrowUp";
-    document.getElementById("downTarget").value = "ArrowDown";
-    document.getElementById("rigthTarget").value = "ArrowRigth";
-    document.getElementById("leftTarget").value = "ArrowLeft";
+    moveUp = 38;
+    moveDown = 40;
+    moveRight= 39;
+    moveLeft = 37;
+    document.getElementById("keyup").value = "Up";
+    document.getElementById("keydown").value = "down";
+    document.getElementById("keyright").value = "right";
+    document.getElementById("keyleft").value = "left";
     document.getElementById("amountMonsters").value = Math.floor(Math.random() * 4) + 1;
     document.getElementById("amountBalls").value = Math.floor(Math.random() * 41) + 50;
     document.getElementById("amountTime").value = Math.floor(Math.random() * 100000) + 60;
