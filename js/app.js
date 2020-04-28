@@ -42,13 +42,13 @@ function Start() {
 	score = 0;
 	pac_color = "yellow";
 	var cnt = 100;
-	var food_remain = 90;
+	var food_remain = 70;
 	var pacman_remain = 1;
 	start_time = new Date();
 	for (var i = 0; i < 10; i++) {
 		board[i] = new Array();
 		//put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
-		for (var j = 0; j < 15; j++) {
+		for (var j = 0; j < 10; j++) {
 			if (
 				(i == 3 && j == 3) ||
 				(i == 3 && j == 4) ||
@@ -130,7 +130,7 @@ function Draw() {
 	lblScore.value = score;
 	lblTime.value = time_elapsed;
 	for (var i = 0; i < 10; i++) {
-		for (var j = 0; j < 15; j++) {
+		for (var j = 0; j < 10; j++) {
 			var center = new Object();
 			center.x = i * 50 + 30;
 			center.y = j * 50 + 30;
