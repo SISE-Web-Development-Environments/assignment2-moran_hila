@@ -54,7 +54,9 @@ function Start() {
 				(i == 3 && j == 4) ||
 				(i == 3 && j == 5) ||
 				(i == 6 && j == 1) ||
-				(i == 6 && j == 2)
+				(i == 6 && j == 2) ||
+				(i == 10 && j == 6) ||
+				(i == 10 && j == 7)
 			) {
 				board[i][j] = 4;
 			} else {
@@ -201,5 +203,5 @@ function UpdatePosition() {
 
 //fonction for music
 function Sound(){
-
+	
 }
