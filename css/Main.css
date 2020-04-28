@@ -94,7 +94,7 @@ body{
   }
   #sound{
 	  background-color: black;
-	  float: right;
+	  float: left;
   }
   #sound :hover{
 	box-shadow: inset 0 0 5px #939aa000,
@@ -105,3 +105,4 @@ body{
   #gameSound{
 	  margin-top: 20%;
   }
+

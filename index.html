@@ -2,6 +2,10 @@
 <html>
 
 <head>
+        <meta charset = "utf-8" /> 
+        <title>Packman </title>
+        <!-- add icon link -->
+        <link rel = "icon" href = "css/packman2.jpg" type = "image/x-icon"> 
     <script src="js/jquery-3.4.1.slim.min.js"></script>
     <script src="js/jquery.validate.js"></script>
 
@@ -29,7 +33,7 @@
     <!--Menu-->
     <nav>
         <ul class="MenuBar">
-            <li> <img type="logoImg" src="css/packman2.jpg" ></li>
+            <li> <img type="logoImg" id="logo" src="css/packman2.jpg" ></li>
             <li> <a onclick="welcome()">    Welcome     </a></li>
             <li> <a onclick="register()">   Register    </a></li>
             <li> <a onclick="login()">      Login       </a></li>
@@ -414,7 +418,6 @@
 
     <!--GameDiv-->
     <div id="GameDiv">
-        <button id="sound" onclick="Pause()" ><img id="soundImg"  src="css/soundButton.png" width="40" height="40"></button>
         <div class="grid">
             <div class="gameAttribut">
                 <div class="UserNameDiv" >  
@@ -429,7 +432,7 @@
                     <label for="lblTime">TIME:</label>
                     <input id="lblTime" type="text" />
                 </div>
-            
+                <button id="sound" onclick="Pause()" ><img id="soundImg"  src="css/soundButton.png" width="40" height="40"></button>
             </div>
 
             <div class="game">

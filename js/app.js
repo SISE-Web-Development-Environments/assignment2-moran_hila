@@ -53,7 +53,7 @@ function initParams(){
 	numOf15PointBall = amountBalls*0.3;
 	numOf25PointBall = amountBalls*0.1; 
 	disqualifications = 5;//num of disqualifications to fail
-	if(!paused)
+	if(paused)
 		Pause();
 }
 

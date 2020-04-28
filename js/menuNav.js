@@ -11,6 +11,7 @@ function welcome() {
     register_div.style.display = "none";
     settings_div.style.display = "none"; 
     game_div.style.display = "none";
+    if (!paused) Pause();
 }
 
 function login() {
@@ -25,6 +26,7 @@ function login() {
     register_div.style.display = "none";
     settings_div.style.display = "none";
     game_div.style.display = "none";
+    if (!paused) Pause();
     
 }
 
@@ -40,6 +42,7 @@ function register() {
     register_div.style.display = "block";
     settings_div.style.display = "none";
     game_div.style.display = "none";
+    if (!paused) Pause();
    
 }
 
@@ -57,7 +60,7 @@ function about() {
     register_div.style.display = "none";
     settings_div.style.display = "none";
     game_div.style.display = "none";
-    
+    if (!paused) Pause();
 }
 
 
@@ -87,7 +90,9 @@ function game_nav() {
     login_div.style.display = "none";
     register_div.style.display = "none";
     settings_div.style.display = "none";
-    game_div.style.display = "block";   
+    game_div.style.display = "block";  
+    if(paused)
+		Pause();
 }
 
 $("#register").click(function() {
