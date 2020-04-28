@@ -1,14 +1,3 @@
-var moveUp;
-var moveDown;
-var moveRight;
-var moveLeft;
-var amountMon;
-var amountTime;
-var amountBalls;
-var point5;
-var point15;
-var point25;
-
 $(document).ready(function () {
     listener_changingKeysByUser();
 });
@@ -193,15 +182,25 @@ function pictureChange25Point (event) {
 
 function setElements(){
     moveUp = document.getElementById("keyup");
+    document.getElementById("showUpKey").innerText =moveUp.value+"";
     moveDown = document.getElementById("keydown");
+    document.getElementById("showDownKey").innerText =moveDown.value+"";
     moveRight = document.getElementById("keyright");
+    document.getElementById("showRightKey").innerText =moveRight.value+"";
     moveLeft= document.getElementById("keyleft");
+    document.getElementById("showLeftKey").innerText =moveLeft.value+"";
     amountMon= document.getElementById("amountMonsters");
+    document.getElementById("showAmountMon").innerText =amountMon.value+"";
     amountTime = document.getElementById("amountTime");
+    document.getElementById("showAmountTime").innerText =amountTime.value+"";
     amountBalls = document.getElementById("amountBalls");
+    document.getElementById("showAmountBalls").innerText =amountBalls.value+"";
     point5 = document.getElementById("5Point");
+    document.getElementById("show5Point").innerText =point5.value+"";
     point15 = document.getElementById("15Point");
+    document.getElementById("showpoint15").innerText =point15.value+"";
     point25 = document.getElementById("25Point");
+    document.getElementById("show25Point").innerText =point25.value+"";
 }
 
 function applySettings(){

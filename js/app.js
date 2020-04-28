@@ -1,29 +1,5 @@
-var context;
-var shape = new Object();
-var board;
-var score;
-var pac_color;
-var start_time;
-var time_elapsed;
-var interval;
-
-$(document).ready(function() {
-	context = canvas.getContext("2d");
-	Start();
-});
-
-//draw the board with initiallize the parameters :
-//board
-//score
-//pac_color
-//start_time
-//time_elapsed
-//interval
+//draw the board with the parameters :
 /**
- moveUp;
- moveDown;
- moveRight;
- moveLeft;
  amountMon;
  amountTime;
  amountBalls;
@@ -31,20 +7,59 @@ $(document).ready(function() {
  point15;
  point25;
  */
-function initParams(){
+//fonction for music
+$(document).ready(function () {
+    function sound(src) {
+        this.sound = document.createElement("audio");
+        this.sound.src = src;
+        this.sound.setAttribute("preload", "auto");
+        this.sound.setAttribute("controls", "none");
+        
+        src.style.display = "none";
+        document.body.appendChild(this.sound);
+        this.play = function(){
+            this.sound.play();
+        }
+        this.stop = function(){
+            this.sound.pause();
+        }    
+    }
+});
 
+function Pause() {
+    if (paused) {
+        bgSound.play();
+		paused = false;
+		document.getElementById("soundImg").src="css/soundButton.png";
+    }
+    else {
+        bgSound.pause();
+		paused = true;
+		document.getElementById("soundImg").src="css/muteSoundButton.png";
+    }
+}
+
+function initParams(){
+	context= canvas.getContext("2d");
+    shape = new Object();
+	board = new Array();
+	score = 0;
+	pac_color = "yellow";
+    cnt = 120;
+	food_remain = amountBalls;
+	pacman_remain = 1;
+	start_time = new Date();
+	numOf5PointBall = amountBalls*0.6;
+	numOf15PointBall = amountBalls*0.3;
+	numOf25PointBall = amountBalls*0.1; 
+	disqualifications = 5;//num of disqualifications to fail
+	if(!paused)
+		Pause();
 }
 
 //TODO: add one medicine (trufa)
 function Start() {
 	initParams();
-	board = new Array();
-	score = 0;
-	pac_color = "yellow";
-	var cnt = 120;
-	var food_remain = 70;
-	var pacman_remain = 1;
-	start_time = new Date();
 	for (var i = 0; i < 12; i++) {
 		board[i] = new Array();
 		//put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
@@ -190,18 +205,24 @@ function UpdatePosition() {
 	board[shape.i][shape.j] = 2;
 	var currentTime = new Date();
 	time_elapsed = (currentTime - start_time) / 1000;
-	if (score >= 20 && time_elapsed <= 10) {
-		pac_color = "green";
-	}
-	if (score == 50) {
+	//faild from disqualifications because of the monster
+	if(disqualifications <= 0){
 		window.clearInterval(interval);
-		window.alert("Game completed");
-	} else {
+		window.alert("Loser!");
+	}
+	//faild as the time is over
+	if(amountTime <= time_elapsed){
+		if (score >= 100 ) {
+			window.clearInterval(interval);
+			window.alert("Winner!!!");
+		}
+		else{
+			window.clearInterval(interval);
+			window.alert("You are better than "+score+" points!");
+		}
+	}
+	 else {
 		Draw();
 	}
 }
 
-//fonction for music
-function Sound(){
-	
-}

@@ -22,7 +22,6 @@
     <script language=javascript src="js/about.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -37,7 +36,37 @@
             <li> <a id="myBtn" onclick="about()">   About       </a></li>
         </ul>
     </nav>
-    
+<section>
+    <script>
+            var bgSound=new Audio("PacManSound.mp3");
+            bgSound.setAttribute("loop", "true");
+            var paused=false;
+            var moveUp;
+            var moveDown;
+            var moveRight;
+            var moveLeft;
+            var amountMon;
+            var amountTime;
+            var amountBalls=50;
+            var point5;
+            var point15;
+            var point25;
+            var context;
+            var shape = new Object();
+            var board= new Array();
+            var score = 0;
+            var pac_color= "yellow";
+            var start_time= new Date();
+            var time_elapsed=0;
+            var interval;
+            var cnt = 120;
+            var food_remain= 50;
+            var pacman_remain=1;
+            var numOf5PointBall= 50*0.6;
+            var numOf15PointBall= 50*0.3;
+            var numOf25PointBall= 50*0.1; 
+            var disqualifications=5;
+    </script>
     <!--WelcomeDiv-->
     <div id="WelcomeDiv">
         <div class="Welcome-container">
@@ -266,42 +295,6 @@
         </div>
     </div>
 
-    <!--GameDiv-->
-    <div id="GameDiv">
-        
-        <div class="grid">
-            <div class="gameAttribut">
-                <div class="UserNameDiv" >  
-                    <p id="userName"> </p>
-                </div>
-                <div id="scoreDiv">
-                    <label for="lblScore">SCORE:</label>
-                    <input id="lblScore" type="text" />
-                </div>
-
-                <div id="timeDiv">
-                    <label for="lblTime">TIME:</label>
-                    <input id="lblTime" type="text" />
-                </div>
-            
-            </div>
-
-            <div class="game">
-                
-                <div id="gameDiv">
-                    <canvas id="canvas" height="500" width="600"></canvas>
-                </div>
-
-            </div>
-
-            <div id="gameSetting">
-                <label for="lblTime">Setting:</label>
-
-            </div>
-
-        </div>
-    </div>
-
     <!--SettingsDiv-->
     <div id="SettingsDiv">
         <div class="Settings-container">
@@ -419,15 +412,97 @@
         </div>
     </div>
 
+    <!--GameDiv-->
+    <div id="GameDiv">
+        <button id="sound" onclick="Pause()" ><img id="soundImg"  src="css/soundButton.png" width="40" height="40"></button>
+        <div class="grid">
+            <div class="gameAttribut">
+                <div class="UserNameDiv" >  
+                    <p id="userName"> </p>
+                </div>
+                <div id="scoreDiv">
+                    <label for="lblScore">SCORE:</label>
+                    <input id="lblScore" type="text" />
+                </div>
+
+                <div id="timeDiv">
+                    <label for="lblTime">TIME:</label>
+                    <input id="lblTime" type="text" />
+                </div>
+            
+            </div>
+
+            <div class="game">
+                
+                <div id="gameDiv">
+                    <canvas id="canvas" height="500" width="600"></canvas>
+                </div>
+
+            </div>
+
+            <div id="gameSetting">
+                <h1>Settings:</h1>
+                <table id="tableSettings">
+                    <tr>
+                      <td class="settTd">Up Key:</td>
+                      <td class="settTd" id="showUpKey"></td> 
+                    </tr>
+                    <tr>
+                      <td class="settTd" >Down Key:</td>
+                      <td class="settTd" id="showDownKey"></td>
+                    </tr>
+                    <tr>
+                        <td class="settTd">Right Key:</td>
+                        <td class="settTd" id="showRightKey"></td>
+                    </tr>
+                    <tr>
+                        <td class="settTd" >Left Key:</td>
+                        <td class="settTd" id="showLeftKey"></td>
+                    </tr>
+                    <tr>
+                        <td class="settTd">Amount of monsters:</td>
+                        <td class="settTd" id="showAmountMon"></td>
+                    </tr>
+                    <tr>
+                        <td class="settTd">Total time:</td>
+                        <td class="settTd" id="showAmountTime"></td>
+                    </tr>
+                    <tr>
+                        <td class="settTd">Amount of balls:</td>
+                        <td class="settTd" id="showAmountBalls"></td>
+                    </tr>
+                    <tr>
+                        <td class="settTd">Color of 5 point balls:</td>
+                        <td class="settTd" id="show5Point"></td>
+                    </tr>
+                    <tr>
+                        <td class="settTd"> Color of 15 point balls:</td>
+                        <td class="settTd" id="showpoint15"></td>
+                    </tr>
+                    <tr>
+                        <td class="settTd"> Color of 25 point balls:</td>
+                        <td class="settTd" id="show25Point"></td>
+                    </tr>
+                  </table>
+            </div>
+
+        </div>
+        <script>
+            Start();
+        </script>
+    </div>
+</section>
+    <script>
+        welcome()
+    </script>
+
     <footer>
         <span>© This project is one of the assignments in Web Development Environments course of BGU
             UNIVERSITY - April 2020.<br></span>
         <a href="mailto:moran_hila@pac-man.com">contact us!</a>
     </footer>
 
-    <script>
-        welcome()
-    </script>
+    
 </body>
 
 </html>

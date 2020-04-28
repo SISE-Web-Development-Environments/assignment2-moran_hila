@@ -31,3 +31,18 @@ label[for="lblTime"]{
 #lblTime{
     width: 40%;
 }
+
+#tableSettings{  
+    border: 1px solid #ddd;
+    text-align: left;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .settTd {  
+    border: 1px solid #ddd;
+    text-align: left;
+    
+    padding: 5px;
+  }
+
+  
