@@ -1,16 +1,33 @@
 
 #GameDiv{
-    margin-top: 5%;
+    margin-top: 68px;
     margin-left: 3%;
 
 }
 .grid{
     display: grid;
-    width: 90%;
-    grid-template-columns: 30% 70%;
+    width: 100%;
+    grid-template-columns: auto auto auto;
     color: white;
-  }  
-  .UserNameDiv{
-      color: white;
-      size: 20px;
-  }
+}
+.UserNameDiv{
+    color: white;
+    size: 20px;
+}
+#canvas{
+    box-shadow: 1px 1px 15px silver;
+
+}
+label[for="lblScore"]{
+    background-color: black;
+}
+label[for="lblTime"]{
+    background-color: black;
+}
+
+#lblScore{
+    width: 40%;
+}
+#lblTime{
+    width: 40%;
+}
