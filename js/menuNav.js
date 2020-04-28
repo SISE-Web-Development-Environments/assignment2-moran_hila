@@ -88,7 +88,6 @@ function game_nav() {
     register_div.style.display = "none";
     settings_div.style.display = "none";
     game_div.style.display = "block";   
-    
 }
 
 $("#register").click(function() {

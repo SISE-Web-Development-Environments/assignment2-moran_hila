@@ -12,22 +12,43 @@ $(document).ready(function() {
 	Start();
 });
 
-function init(){
+//draw the board with initiallize the parameters :
+//board
+//score
+//pac_color
+//start_time
+//time_elapsed
+//interval
+/**
+ moveUp;
+ moveDown;
+ moveRight;
+ moveLeft;
+ amountMon;
+ amountTime;
+ amountBalls;
+ point5;
+ point15;
+ point25;
+ */
+function initParams(){
 
 }
 
+//TODO: add one medicine (trufa)
 function Start() {
+	initParams();
 	board = new Array();
 	score = 0;
 	pac_color = "yellow";
 	var cnt = 100;
-	var food_remain = 50;
+	var food_remain = 90;
 	var pacman_remain = 1;
 	start_time = new Date();
 	for (var i = 0; i < 10; i++) {
 		board[i] = new Array();
 		//put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
-		for (var j = 0; j < 10; j++) {
+		for (var j = 0; j < 15; j++) {
 			if (
 				(i == 3 && j == 3) ||
 				(i == 3 && j == 4) ||
@@ -78,14 +99,16 @@ function Start() {
 
 function findRandomEmptyCell(board) {
 	var i = Math.floor(Math.random() * 9 + 1);
-	var j = Math.floor(Math.random() * 9 + 1);
+	var j = Math.floor(Math.random() * 14 + 1);
 	while (board[i][j] != 0) {
 		i = Math.floor(Math.random() * 9 + 1);
-		j = Math.floor(Math.random() * 9 + 1);
+		j = Math.floor(Math.random() * 14 + 1);
 	}
 	return [i, j];
 }
 
+//update arrows from settings (from init)
+//update direction of packman
 function GetKeyPressed() {
 	if (keysDown[38]) {
 		return 1;
@@ -101,23 +124,24 @@ function GetKeyPressed() {
 	}
 }
 
+
 function Draw() {
 	canvas.width = canvas.width; //clean board
 	lblScore.value = score;
 	lblTime.value = time_elapsed;
 	for (var i = 0; i < 10; i++) {
-		for (var j = 0; j < 10; j++) {
+		for (var j = 0; j < 15; j++) {
 			var center = new Object();
-			center.x = i * 60 + 30;
-			center.y = j * 60 + 30;
+			center.x = i * 50 + 30;
+			center.y = j * 50 + 30;
 			if (board[i][j] == 2) {
 				context.beginPath();
-				context.arc(center.x, center.y, 30, 0.15 * Math.PI, 1.85 * Math.PI); // half circle
+				context.arc(center.x, center.y, 20, 0.15 * Math.PI, 1.85 * Math.PI); // half circle
 				context.lineTo(center.x, center.y);
 				context.fillStyle = pac_color; //color
 				context.fill();
 				context.beginPath();
-				context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
+				context.arc(center.x + 5, center.y - 10, 3, 0, 2 * Math.PI); // circle
 				context.fillStyle = "black"; //color
 				context.fill();
 			} else if (board[i][j] == 1) {
@@ -127,7 +151,7 @@ function Draw() {
 				context.fill();
 			} else if (board[i][j] == 4) {
 				context.beginPath();
-				context.rect(center.x - 30, center.y - 30, 60, 60);
+				context.rect(center.x - 30, center.y - 30, 50, 50);
 				context.fillStyle = "grey"; //color
 				context.fill();
 			}
@@ -173,4 +197,9 @@ function UpdatePosition() {
 	} else {
 		Draw();
 	}
+}
+
+//fonction for music
+function Sound(){
+
 }
