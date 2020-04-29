@@ -266,7 +266,7 @@ function randomSettings(){
     document.getElementById("keyleft").value = "left";
     document.getElementById("amountMonsters").value = Math.floor(Math.random() * 4) + 1;
     document.getElementById("amountBalls").value = Math.floor(Math.random() * 41) + 50;
-    document.getElementById("amountTime").value = Math.floor(Math.random() * 100000) + 60;
+    document.getElementById("amountTime").value = Math.floor(Math.random() * 1000) + 60;
     let num1=Math.floor(Math.random() * 9) + 1;
     let num2=Math.floor(Math.random() * 9) + 1;
     let num3=Math.floor(Math.random() * 9) + 1;

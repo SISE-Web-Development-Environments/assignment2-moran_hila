@@ -1,31 +1,4 @@
-//draw the board with the parameters :
-/**
- amountMon;
- amountTime;
- amountBalls;
- point5;
- point15;
- point25;
- */
-//fonction for music
-/*
-$(document).ready(function () {
-    function sound(src) {
-        this.sound = document.createElement("audio");
-        this.sound.src = src;
-        this.sound.setAttribute("preload", "auto");
-        this.sound.setAttribute("controls", "none");
-        
-        src.style.display = "none";
-        document.body.appendChild(this.sound);
-        this.play = function(){
-            this.sound.play();
-        }
-        this.stop = function(){
-            this.sound.pause();
-        }    
-    }
-});*/
+var monstersPlaces=[];
 
 function Pause() {
     if (paused) {
@@ -41,12 +14,15 @@ function Pause() {
 }
 
 function initParams(){
+	isTheGameEnd=false;
 	context= canvas.getContext("2d");
     shape = new Object();
 	board = new Array();
 	score = 0;
 	pac_color = "yellow";
-    cnt = 120;
+	cnt = 120;
+	amountBalls.value=document.getElementById("showAmountBalls").innerHTML;
+	amountMon.value=document.getElementById("showAmountMon").innerText;
 	food_remain = amountBalls;
 	pacman_remain = 1;
 	start_time = new Date();
@@ -65,6 +41,7 @@ function initParams(){
 		numOf15PointBall++;
 		numOf25PointBall++;
 	}
+	maxScore=numOf5PointBall*5+numOf15PointBall*15+numOf25PointBall*25;
 	disqualifications = 5;//num of disqualifications to fail
 	if(paused)
 		Pause();
@@ -73,6 +50,8 @@ function initParams(){
 //TODO: add one medicine (trufa)
 function Start() {
 	initParams();
+	var timeotOfGame=amountTime.valueAsNumber*1000;
+	setTimeout(DieAsTimeout,timeotOfGame);
 	for (var i = 0; i < 12; i++) {
 		board[i] = new Array();
 		//put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
@@ -125,7 +104,19 @@ function Start() {
 		numOf25PointBall--;
 		food_remain.valueAsNumber--;
 	}
-
+	
+	for(var i = 0; i < amountMon.valueAsNumber ; i++ ){
+		var monsterPlace = findRandomEmptyCell(board);
+		if(i===0){
+			board[monsterPlace[0]][monsterPlace[1]]=8;
+			monstersPlaces[i]=monsterPlace;
+		}
+		else{
+			board[monsterPlace[0]][monsterPlace[1]]=3;
+			monstersPlaces[i]=monsterPlace;
+		}
+	}
+	
 	keysDown = {};
 	addEventListener(
 		"keydown",
@@ -141,7 +132,7 @@ function Start() {
 		},
 		false
 	);
-	interval = setInterval(UpdatePosition, 100);
+	interval = setInterval(UpdatePosition, 100);	
 }
 
 function findRandomEmptyCell(board) {
@@ -177,14 +168,8 @@ function Draw() {
 	lblScore.value = score;
 	lblTime.value = time_elapsed;
 	let imgColor5=document.getElementById("image1");
-	//imgColor5.style.height=50;
-	//imgColor5.style.width =50;
 	let imgColor15=document.getElementById("image2");
 	let imgColor25=document.getElementById("image3");
-	//var c = document.getElementById("myCanvas");
-	//var ctx = c.getContext("2d");
-	//var img = document.getElementById("scream");
-	//ctx.drawImage(img, 10, 10);
 	for (var i = 0; i < 12; i++) {
 		for (var j = 0; j < 10; j++) {
 			var center = new Object();
@@ -205,32 +190,37 @@ function Draw() {
 			} else if (board[i][j] == 5) {
 				context.beginPath();
 				context.drawImage(imgColor5,center.x+5, center.y+5,40,40);
-			//	context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-			//	context.fillStyle = "red"; //color
 				context.fill();
-
-
 			} else if (board[i][j] == 6) {
 				context.beginPath();
 				context.drawImage(imgColor15,center.x+5, center.y+5,40,40);
-
-//				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-//				context.fillStyle = "blue"; //color
 				context.fill();
 			} else if (board[i][j] == 7) {
 				context.beginPath();
 				context.drawImage(imgColor25,center.x+5, center.y+5,40,40);
-				//context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				//context.fillStyle = "white"; //color
 				context.fill();
-
-
 			} else if (board[i][j] == 4) {
 				context.beginPath();
 				context.rect(center.x, center.y, 50, 50);
 				context.fillStyle = "grey"; //color
 				context.fill();
 			}
+		}
+	}
+	for(var i=0;i<amountMon.valueAsNumber;i++){
+		if(i===0){
+			var extraMonster = new Image(40,40);
+			extraMonster.src="monster2.gif";
+			context.beginPath();
+			context.drawImage(extraMonster,monstersPlaces[i][0]*50+5,monstersPlaces[i][1]*50+5,40,40);
+			context.fill();
+		}
+		else{
+			var regularMonster = new Image(40,40);
+			regularMonster.src="monster.gif";
+			context.beginPath();
+			context.drawImage(regularMonster,monstersPlaces[i][0]*50+5,monstersPlaces[i][1]*50+5,40,40);
+			context.fill();
 		}
 	}
 }
@@ -258,33 +248,53 @@ function UpdatePosition() {
 			shape.i++;
 		}
 	}
-	if (board[shape.i][shape.j] == 1) {
-		score++;
+	if (board[shape.i][shape.j] == 5) {
+		score=score+5;
+	}
+	if (board[shape.i][shape.j] == 6) {
+		score=score+15;
+	}
+	if (board[shape.i][shape.j] == 7) {
+		score=score+25;
 	}
 	board[shape.i][shape.j] = 2;
+	Draw();
 	var currentTime = new Date();
 	time_elapsed = (currentTime - start_time) / 1000;
 	//faild from disqualifications because of the monster
 	if(disqualifications <= 0){
-		window.clearInterval(interval);
-		window.alert("Loser!");
+		setTimeout(DieAsMonster,50);
 	}
-	//faild as the time is over
-	if(amountTime <= time_elapsed){
-		if (score >= 100 ) {
-			window.clearInterval(interval);
-			window.alert("Winner!!!");
-		}
-		else{
-			window.clearInterval(interval);
-			window.alert("You are better than "+score+" points!");
-		}
-	}
-	 else {
-		Draw();
+	if(maxScore==score){
+		setTimeout(End,50);
 	}
 }
 
+function DieAsTimeout(){
+	if(score >= 100){
+		setTimeout(End,50);
+	}
+	else{
+		if (!paused) Pause();
+		window.clearInterval(interval);
+		window.alert("You are better than "+score+" points!");
+		Start();
+	}
+}
+
+function DieAsMonster(){
+	if (!paused) Pause();
+	window.clearInterval(interval);
+	window.alert("Loser!");
+	Start();
+}
+
+function End(){
+	if (!paused) Pause();
+	window.clearInterval(interval);
+	window.alert("Winner!!!");
+	Start();
+}
 
 function addRanBalls(i ,j){
 		let add= false;
