@@ -91,8 +91,12 @@ function game_nav() {
     register_div.style.display = "none";
     settings_div.style.display = "none";
     game_div.style.display = "block";  
-    if(paused)
-		Pause();
+    
+    // if(paused){
+    //     Pause();
+    // }
+    Start();
+
 }
 
 $("#register").click(function() {
