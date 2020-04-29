@@ -16,7 +16,7 @@
 }
 #canvas{
     box-shadow: 1px 1px 15px silver;
-    backdrop-filter: blur(10px);
+    background: white;
 
 }
 label[for="lblScore"]{

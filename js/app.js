@@ -176,42 +176,58 @@ function Draw() {
 	canvas.width = canvas.width; //clean board
 	lblScore.value = score;
 	lblTime.value = time_elapsed;
+	let imgColor5=document.getElementById("image1");
+	//imgColor5.style.height=50;
+	//imgColor5.style.width =50;
+	let imgColor15=document.getElementById("image2");
+	let imgColor25=document.getElementById("image3");
+	//var c = document.getElementById("myCanvas");
+	//var ctx = c.getContext("2d");
+	//var img = document.getElementById("scream");
+	//ctx.drawImage(img, 10, 10);
 	for (var i = 0; i < 12; i++) {
 		for (var j = 0; j < 10; j++) {
 			var center = new Object();
-			center.x = i * 50 + 30;
-			center.y = j * 50 + 30;
+			center.x = i * 50 ;
+			center.y = j * 50 ;
 			if (board[i][j] == 2) {
+				center.x= i*50+25;
+				center.y= j*50+25;
 				context.beginPath();
 				context.arc(center.x, center.y, 20, 0.15 * Math.PI, 1.85 * Math.PI); // half circle
 				context.lineTo(center.x, center.y);
 				context.fillStyle = pac_color; //color
 				context.fill();
 				context.beginPath();
-				context.arc(center.x + 5, center.y - 10, 3, 0, 2 * Math.PI); // circle
+				context.arc(center.x +5, center.y -10, 3, 0, 2 * Math.PI); // circle
 				context.fillStyle = "black"; //color
 				context.fill();
 			} else if (board[i][j] == 5) {
 				context.beginPath();
-				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				context.fillStyle = "red"; //color
+				context.drawImage(imgColor5,center.x+5, center.y+5,40,40);
+			//	context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+			//	context.fillStyle = "red"; //color
 				context.fill();
+
 
 			} else if (board[i][j] == 6) {
 				context.beginPath();
-				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				context.fillStyle = "blue"; //color
+				context.drawImage(imgColor15,center.x+5, center.y+5,40,40);
+
+//				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+//				context.fillStyle = "blue"; //color
 				context.fill();
 			} else if (board[i][j] == 7) {
 				context.beginPath();
-				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				context.fillStyle = "white"; //color
+				context.drawImage(imgColor25,center.x+5, center.y+5,40,40);
+				//context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+				//context.fillStyle = "white"; //color
 				context.fill();
 
 
 			} else if (board[i][j] == 4) {
 				context.beginPath();
-				context.rect(center.x - 30, center.y - 30, 50, 50);
+				context.rect(center.x, center.y, 50, 50);
 				context.fillStyle = "grey"; //color
 				context.fill();
 			}
