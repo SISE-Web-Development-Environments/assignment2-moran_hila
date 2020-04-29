@@ -8,6 +8,7 @@
  point25;
  */
 //fonction for music
+/*
 $(document).ready(function () {
     function sound(src) {
         this.sound = document.createElement("audio");
@@ -24,7 +25,7 @@ $(document).ready(function () {
             this.sound.pause();
         }    
     }
-});
+});*/
 
 function Pause() {
     if (paused) {
@@ -49,9 +50,21 @@ function initParams(){
 	food_remain = amountBalls;
 	pacman_remain = 1;
 	start_time = new Date();
-	numOf5PointBall = amountBalls*0.6;
-	numOf15PointBall = amountBalls*0.3;
-	numOf25PointBall = amountBalls*0.1; 
+	numOf5PointBall = Math.floor(food_remain.valueAsNumber*0.6);
+	numOf15PointBall = Math.floor(food_remain.valueAsNumber*0.3);
+	numOf25PointBall = Math.floor(food_remain.valueAsNumber*0.1);
+	if(  food_remain.valueAsNumber-(numOf5PointBall+numOf25PointBall+numOf15PointBall) ==1 ){
+		numOf5PointBall++;
+	}
+	if(  food_remain.valueAsNumber-(numOf5PointBall+numOf25PointBall+numOf15PointBall) ==2 ){
+		numOf5PointBall++;
+		numOf15PointBall++;
+	}
+	if(  food_remain.valueAsNumber-(numOf5PointBall+numOf25PointBall+numOf15PointBall) ==3 ){
+		numOf5PointBall++;
+		numOf15PointBall++;
+		numOf25PointBall++;
+	}
 	disqualifications = 5;//num of disqualifications to fail
 	if(paused)
 		Pause();
@@ -74,12 +87,13 @@ function Start() {
 				(i == 10 && j == 7)
 			) {
 				board[i][j] = 4;
-			} else {
+			} 
+			else {
+
 				var randomNum = Math.random();
-				if (randomNum <= (1.0 * food_remain) / cnt) {
-					food_remain--;
-					board[i][j] = 1;
-				} else if (randomNum < (1.0 * (pacman_remain + food_remain)) / cnt) {
+				if(randomNum <= (1.0 * food_remain.valueAsNumber) / cnt){
+					addRanBalls(i,j);
+				} else if (randomNum < (1.0 * (pacman_remain + food_remain.valueAsNumber)) / cnt) {
 					shape.i = i;
 					shape.j = j;
 					pacman_remain--;
@@ -91,27 +105,43 @@ function Start() {
 			}
 		}
 	}
-	while (food_remain > 0) {
+	while (numOf5PointBall > 0) {
 		var emptyCell = findRandomEmptyCell(board);
-		board[emptyCell[0]][emptyCell[1]] = 1;
-		food_remain--;
+		board[emptyCell[0]][emptyCell[1]] = 5;
+		numOf5PointBall--;
+		food_remain.valueAsNumber--;
 	}
+
+	while (numOf15PointBall > 0) {
+		var emptyCell = findRandomEmptyCell(board);
+		board[emptyCell[0]][emptyCell[1]] = 6;
+		numOf15PointBall--;
+		food_remain.valueAsNumber--;
+	}
+
+	while (numOf25PointBall > 0) {
+		var emptyCell = findRandomEmptyCell(board);
+		board[emptyCell[0]][emptyCell[1]] = 7;
+		numOf25PointBall--;
+		food_remain.valueAsNumber--;
+	}
+
 	keysDown = {};
 	addEventListener(
 		"keydown",
 		function(e) {
-			keysDown[e.keyCode] = true;
+			keysDown[e.which] = true;
 		},
 		false
 	);
 	addEventListener(
 		"keyup",
 		function(e) {
-			keysDown[e.keyCode] = false;
+			keysDown[e.which] = false;
 		},
 		false
 	);
-	interval = setInterval(UpdatePosition, 250);
+	interval = setInterval(UpdatePosition, 100);
 }
 
 function findRandomEmptyCell(board) {
@@ -127,16 +157,16 @@ function findRandomEmptyCell(board) {
 //update arrows from settings (from init)
 //update direction of packman
 function GetKeyPressed() {
-	if (keysDown[38]) {
+	if (keysDown[moveUp]) {
 		return 1;
 	}
-	if (keysDown[40]) {
+	if (keysDown[moveDown]) {
 		return 2;
 	}
-	if (keysDown[37]) {
+	if (keysDown[moveLeft]) {
 		return 3;
 	}
-	if (keysDown[39]) {
+	if (keysDown[moveRight]) {
 		return 4;
 	}
 }
@@ -161,11 +191,24 @@ function Draw() {
 				context.arc(center.x + 5, center.y - 10, 3, 0, 2 * Math.PI); // circle
 				context.fillStyle = "black"; //color
 				context.fill();
-			} else if (board[i][j] == 1) {
+			} else if (board[i][j] == 5) {
+				context.beginPath();
+				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+				context.fillStyle = "red"; //color
+				context.fill();
+
+			} else if (board[i][j] == 6) {
+				context.beginPath();
+				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+				context.fillStyle = "blue"; //color
+				context.fill();
+			} else if (board[i][j] == 7) {
 				context.beginPath();
 				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
 				context.fillStyle = "white"; //color
 				context.fill();
+
+
 			} else if (board[i][j] == 4) {
 				context.beginPath();
 				context.rect(center.x - 30, center.y - 30, 50, 50);
@@ -224,5 +267,33 @@ function UpdatePosition() {
 	 else {
 		Draw();
 	}
+}
+
+
+function addRanBalls(i ,j){
+		let add= false;
+		while(!add){
+		let randomColor= Math.floor(Math.random() * 3);//0, 1, 2
+			if( randomColor==0 &&numOf5PointBall>0 ) {
+				board[i][j]=5;
+				numOf5PointBall--;
+				food_remain.valueAsNumber--;
+				add=true;
+			}
+			else if( randomColor==1 &&numOf15PointBall>0 ){
+				board[i][j]=6;
+				numOf15PointBall--;
+				food_remain.valueAsNumber--;
+				add=true;
+			}
+			
+			else if( randomColor==2  && numOf25PointBall>0){
+				board[i][j]=7;
+				numOf25PointBall--;
+				food_remain.valueAsNumber--;
+				add=true;
+			}
+	}
+	
 }
 

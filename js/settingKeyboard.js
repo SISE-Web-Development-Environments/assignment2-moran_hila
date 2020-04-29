@@ -11,20 +11,20 @@ function listener_changingKeysByUser() {
         moveLeft= event.which;
     }
     else if(event.which==37){
-        document.getElementById("keyleft").value ="Left";
+        document.getElementById("keyleft").value ="left";
         moveLeft= event.which;
         
     }
     else if(event.which==38){
-        document.getElementById("keyleft").value ="Up";
+        document.getElementById("keyleft").value ="up";
         moveLeft= event.which;
     }
     else if(event.which==39){
-        document.getElementById("keyleft").value ="Right";
+        document.getElementById("keyleft").value ="right";
         moveLeft= event.which;
     }
     else if(event.which==40){
-        document.getElementById("keyleft").value ="Down";
+        document.getElementById("keyleft").value ="down";
         moveLeft= event.which;
     }
 
@@ -37,20 +37,20 @@ function listener_changingKeysByUser() {
         moveRight= event.which;
     }
     else if(event.which==37){
-        document.getElementById("keyright").value ="Left";
+        document.getElementById("keyright").value ="left";
         moveRight= event.which;
         
     }
     else if(event.which==38){
-        document.getElementById("keyright").value ="Up";
+        document.getElementById("keyright").value ="up";
         moveRight= event.which;
     }
     else if(event.which==39){
-        document.getElementById("keyright").value ="Right";
+        document.getElementById("keyright").value ="right";
         moveRight= event.which;
     }
     else if(event.which==40){
-        document.getElementById("keyright").value ="Down";
+        document.getElementById("keyright").value ="down";
         moveRight= event.which;
     }
     });
@@ -62,20 +62,20 @@ function listener_changingKeysByUser() {
             moveUp= event.which;
         }
         else if(event.which==37){
-            document.getElementById("keyup").value ="Left";
+            document.getElementById("keyup").value ="left";
             moveUp= event.which;
             
         }
         else if(event.which==38){
-            document.getElementById("keyup").value ="Up";
+            document.getElementById("keyup").value ="up";
             moveUp= event.which;
         }
         else if(event.which==39){
-            document.getElementById("keyup").value ="Right";
+            document.getElementById("keyup").value ="right";
             moveUp= event.which;
         }
         else if(event.which==40){
-            document.getElementById("keyup").value ="Down";
+            document.getElementById("keyup").value ="down";
             moveUp= event.which;
         }
     });
@@ -87,20 +87,20 @@ function listener_changingKeysByUser() {
             moveDown= event.which;
         }
         else if(event.which==37){
-            document.getElementById("keydown").value ="Left";
+            document.getElementById("keydown").value ="left";
             moveDown= event.which;
             
         }
         else if(event.which==38){
-            document.getElementById("keydown").value ="Up";
+            document.getElementById("keydown").value ="up";
             moveDown= event.which;
         }
         else if(event.which==39){
-            document.getElementById("keydown").value ="Right";
+            document.getElementById("keydown").value ="right";
             moveDown= event.which;
         }
         else if(event.which==40){
-            document.getElementById("keydown").value ="Down";
+            document.getElementById("keydown").value ="down";
             moveDown= event.which;
         }
     });
@@ -181,14 +181,14 @@ function pictureChange25Point (event) {
 }
 
 function setElements(){
-    moveUp = document.getElementById("keyup");
-    document.getElementById("showUpKey").innerText =moveUp.value+"";
-    moveDown = document.getElementById("keydown");
-    document.getElementById("showDownKey").innerText =moveDown.value+"";
-    moveRight = document.getElementById("keyright");
-    document.getElementById("showRightKey").innerText =moveRight.value+"";
-    moveLeft= document.getElementById("keyleft");
-    document.getElementById("showLeftKey").innerText =moveLeft.value+"";
+    //moveUp = document.getElementById("keyup");
+    document.getElementById("showUpKey").innerText =document.getElementById("keyup").value+"";
+    //moveDown = document.getElementById("keydown");
+    document.getElementById("showDownKey").innerText =document.getElementById("keydown").value+"";
+    //moveRight = document.getElementById("keyright");
+    document.getElementById("showRightKey").innerText =document.getElementById("keyright").value+"";
+    //moveLeft= document.getElementById("keyleft");
+    document.getElementById("showLeftKey").innerText =document.getElementById("keyleft").value+"";
     amountMon= document.getElementById("amountMonsters");
     document.getElementById("showAmountMon").innerText =amountMon.value+"";
     amountTime = document.getElementById("amountTime");
@@ -231,12 +231,12 @@ function applySettings(){
 
 function checkValidButton(){
     
-    if( moveUp.value != moveDown.value &&
-        moveUp.value != moveLeft.value &&
-        moveUp.value != moveRight.value &&
-        moveDown.value != moveLeft.value &&
-        moveDown.value != moveRight.value &&
-        moveRight.value != moveLeft.value ) {
+    if( moveUp != moveDown &&
+        moveUp != moveLeft &&
+        moveUp != moveRight &&
+        moveDown != moveLeft &&
+        moveDown != moveRight &&
+        moveRight != moveLeft ) {
             return true;
     }
     else{
@@ -260,7 +260,7 @@ function randomSettings(){
     moveDown = 40;
     moveRight= 39;
     moveLeft = 37;
-    document.getElementById("keyup").value = "Up";
+    document.getElementById("keyup").value = "up";
     document.getElementById("keydown").value = "down";
     document.getElementById("keyright").value = "right";
     document.getElementById("keyleft").value = "left";
