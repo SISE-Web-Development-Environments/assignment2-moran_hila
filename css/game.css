@@ -1,6 +1,6 @@
 
 #GameDiv{
-    margin-top: 80px;
+    margin-top: 75px;
     margin-left: 3%;
 
 }
@@ -11,8 +11,12 @@
     color: white;
 }
 .UserNameDiv{
+
+    font-family: Poppins-Regular;
+    font-size: 30px;
     color: white;
-    size: 20px;
+    backdrop-filter: blur(10px);
+
 }
 #canvas{
     box-shadow: 1px 1px 15px silver;
@@ -27,10 +31,13 @@ label[for="lblTime"]{
 }
 
 #lblScore{
-    width: 40%;
+    width: 70%;
 }
 #lblTime{
-    width: 40%;
+    width: 70%;
+}
+#lblLive{
+    width: 70%;
 }
 
 #tableSettings{  
@@ -38,16 +45,23 @@ label[for="lblTime"]{
     text-align: left;
     border-collapse: collapse;
     width: 100%;
+    backdrop-filter: blur(10px);
   }
 .settTd {  
     border: 1px solid #ddd;
     text-align: left;
-    
     padding: 5px;
 }
 
-#tableSettings{
+#valuesInputGame{
+    border: 1px solid #ddd;
+    text-align: left;
+    border-collapse: collapse;
+    width: 80%;
     backdrop-filter: blur(10px);
+}
+#restart{
+    margin-left: 5%;
 }
 
   

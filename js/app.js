@@ -19,6 +19,7 @@ function initParams(){
     shape = new Object();
 	board = new Array();
 	score = 0;
+
 	pac_color = "yellow";
 	cnt = 120;
 	amountBalls.value=document.getElementById("showAmountBalls").innerHTML;
@@ -166,6 +167,7 @@ function GetKeyPressed() {
 function Draw() {
 	canvas.width = canvas.width; //clean board
 	lblScore.value = score;
+	lblLive.value = lives;
 	lblTime.value = time_elapsed;
 	let imgColor5=document.getElementById("image1");
 	let imgColor15=document.getElementById("image2");
@@ -299,21 +301,21 @@ function End(){
 function addRanBalls(i ,j){
 		let add= false;
 		while(!add){
-		let randomColor= Math.floor(Math.random() * 3);//0, 1, 2
-			if( randomColor==0 &&numOf5PointBall>0 ) {
+		let randomColor= Math.floor(Math.random() * 9);//0, 1, 2
+			if(randomColor<10 && randomColor>3 &&numOf5PointBall>0 ) {
 				board[i][j]=5;
 				numOf5PointBall--;
 				food_remain.valueAsNumber--;
 				add=true;
 			}
-			else if( randomColor==1 &&numOf15PointBall>0 ){
+			else if( randomColor<4 && randomColor>0 &&numOf15PointBall>0 ){
 				board[i][j]=6;
 				numOf15PointBall--;
 				food_remain.valueAsNumber--;
 				add=true;
 			}
 			
-			else if( randomColor==2  && numOf25PointBall>0){
+			else if( randomColor==0  && numOf25PointBall>0){
 				board[i][j]=7;
 				numOf25PointBall--;
 				food_remain.valueAsNumber--;
