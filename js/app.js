@@ -3,6 +3,12 @@ var isUp=false;
 var isDown=false;
 var isLeft=true;
 var isRight=false;
+var timeotOfGame;
+var timeOutInit=[];
+var candyCell;
+var timeOutCandy=[];
+var eatCandy=false;
+var numOfEatenBalls;
 
 function Pause() {
     if (paused) {
@@ -18,12 +24,24 @@ function Pause() {
 }
 
 function initParams(){
+	
+	for(var i= 0; i< timeOutInit.length ; i++){
+		clearTimeout(timeOutInit[i]);	
+	}
+	if(!eatCandy){
+		for(var j= 0; j< timeOutCandy.length ; j++){
+			clearTimeout(timeOutCandy[j]);
+		}
+	}
+	numOfEatenBalls=0;
+	eatCandy=false;
+	timeOutCandy=new Array();
+	timeOutInit=new Array();
 	isTheGameEnd=false;
 	context= canvas.getContext("2d");
     shape = new Object();
 	board = new Array();
 	score = 0;
-
 	pac_color = "yellow";
 	cnt = 120;
 	amountBalls.value=document.getElementById("showAmountBalls").innerHTML;
@@ -34,6 +52,7 @@ function initParams(){
 	numOf5PointBall = Math.floor(food_remain.valueAsNumber*0.6);
 	numOf15PointBall = Math.floor(food_remain.valueAsNumber*0.3);
 	numOf25PointBall = Math.floor(food_remain.valueAsNumber*0.1);
+	timeotOfGame=amountTime.valueAsNumber*1000;
 	if(  food_remain.valueAsNumber-(numOf5PointBall+numOf25PointBall+numOf15PointBall) ==1 ){
 		numOf5PointBall++;
 	}
@@ -51,9 +70,13 @@ function initParams(){
 	lives = 5;//num of disqualifications to fail
 	if(paused)
 		Pause();
+	
+	isIntervalSet = true;
+//	setTimeout(StartInterval,1000);
 }
 
 function initMonsters(){
+	monstersPlaces= new Array();
 	for(var i = 0; i < amountMon.valueAsNumber ; i++ ){
 		var monsterPlace = new Object();
 		if(i===0){
@@ -98,6 +121,7 @@ function initMonsters(){
 		}
 	}
 }
+
 
 //TODO: add one medicine (trufa)
 function Start() {
@@ -161,11 +185,16 @@ function Start() {
 	var emptyCell = findRandomEmptyCell(board);
 	board[emptyCell[0]][emptyCell[1]] = 1;
 	
-	var timeotOfGame=amountTime.valueAsNumber*1000;
-	setTimeout(DieAsTimeout,timeotOfGame);
+	candyCell = findRandomEmptyCell(board);
+	board[candyCell[0]][candyCell[1]] = 9;
+	
+	timeOutInit.push(setTimeout(DieAsTimeout,timeotOfGame));
 
 	for(var time=0; time<timeotOfGame ; time=time+1000){
-		setTimeout(moveMonsters,time);
+		timeOutInit.push(setTimeout(moveMonsters,time));
+	}
+	for(var time2=0; time2<timeotOfGame ; time2=time2+2000){
+		timeOutCandy.push(setTimeout(moveCandy,time2));
 	}
 
 	keysDown = {};
@@ -184,6 +213,48 @@ function Start() {
 		false
 	);
 	interval = setInterval(UpdatePosition, 100);	
+}
+
+
+function moveCandy(){
+	let randomMove= Math.floor(Math.random()*3+1);
+	if(randomMove==1 &&  candyCell[1]>0 && board[candyCell[0]][candyCell[1]-1] != 4){ //up
+		candyCell[1]--;
+	}
+	else if(randomMove==2 &&  candyCell[1]<11 && board[candyCell[0]][candyCell[1]+1] != 4){ //down
+		candyCell[1]++;
+	}
+	else if(randomMove==3 &&  candyCell[0]<9 && board[candyCell[0]+1][candyCell[1]] != 4){ //right
+		candyCell[0]++;
+	}
+	else if(randomMove==4 &&  candyCell[0]>0 && board[candyCell[0]-1][candyCell[1]] != 4){ //right
+		candyCell[0]--;
+	}
+	
+		if( !eatCandy&& candyCell[0]==shape.i && candyCell[1]==shape.j){
+			score=score+50;
+			lblScore.value = score;
+			eatCandy=true;
+			drowCandy();
+			for(var j= 0; j< timeOutCandy.length ; j++){
+				clearTimeout(timeOutCandy[j]);
+			}
+		}
+	
+	else if(!eatCandy){
+		drowCandy();
+	}
+	
+	
+}
+
+function drowCandy(){
+	var imgCandy=new Image(40,40);
+	imgCandy.src="css/candy.jpg";
+	context.beginPath();
+	context.drawImage(imgCandy,candyCell[0]*50+5, candyCell[1]*50+5,40,40);
+	context.fill();
+	
 }
 
 function findRandomEmptyCell(board) {
@@ -315,9 +386,32 @@ function Draw() {
 				context.drawImage(imgMedicine,center.x+5, center.y+5,40,40);
 				context.fill();
 			}
+
+			
 		}
 	}
 	drawMonsters();
+	if(!eatCandy){
+		drowCandy();
+	}
+}
+
+function StartInterval() {
+    if (!isIntervalSet) {
+        interval = setInterval(Start, timeotOfGame);
+        isIntervalSet = true;
+    }
+}
+
+function ClearInterval() {
+    window.clearInterval(interval);
+	isIntervalSet = false
+	for(var i= 0; i< timeOutInit.length ; i++){
+		clearTimeout(timeOutInit[i]);
+	}
+	for(var j= 0; j< timeOutCandy.length ; j++){
+		clearTimeout(timeOutCandy[j]);
+	}
 }
 
 function UpdatePosition() {
@@ -345,27 +439,41 @@ function UpdatePosition() {
 	}
 	if (board[shape.i][shape.j] == 5) {
 		score=score+5;
+		numOfEatenBalls++;
 	}
 	if (board[shape.i][shape.j] == 6) {
 		score=score+15;
+		numOfEatenBalls++;
 	}
 	if (board[shape.i][shape.j] == 7) {
 		score=score+25;
+		numOfEatenBalls++;
 	}
 	if((board[shape.i][shape.j] == 1)){
 		lives++;
+		
 	}
+	
 	board[shape.i][shape.j] = 2;
 	Draw();
+	if( !eatCandy&& candyCell[0]==shape.i && candyCell[1]==shape.j){
+		score=score+50;
+		lblScore.value = score;
+		eatCandy=true;
+		for(var j= 0; j< timeOutCandy.length ; j++){
+			clearTimeout(timeOutCandy[j]);
+		}
+	}
 
 	var currentTime = new Date();
 	time_elapsed = (currentTime - start_time) / 1000;
 	//faild from disqualifications because of the monster
 	if(lives <= 0){
-		setTimeout(DieAsMonster,50);
+		timeOutInit.push(setTimeout(DieAsMonster,50));
 	}
-	if(maxScore==score){
-		setTimeout(End,50);
+	var num= document.getElementById("showAmountBalls").innerHTML.value;
+	if(num===numOfEatenBalls){
+		timeOutInit.push(setTimeout(End,50));
 	}
 }
 
@@ -375,7 +483,7 @@ function DieAsTimeout(){
 	}
 	else{
 		if (!paused) Pause();
-		window.clearInterval(interval);
+		ClearInterval();
 		window.alert("You are better than "+score+" points!");
 		Start();
 	}
@@ -383,15 +491,16 @@ function DieAsTimeout(){
 
 function DieAsMonster(){
 	if (!paused) Pause();
-	window.clearInterval(interval);
+	ClearInterval();
 	window.alert("Loser!");
 	Start();
 }
 
 function End(){
 	if (!paused) Pause();
-	window.clearInterval(interval);
+	ClearInterval();
 	window.alert("Winner!!!");
+
 	Start();
 }
 
