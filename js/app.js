@@ -24,15 +24,7 @@ function Pause() {
 }
 
 function initParams(){
-	
-	for(var i= 0; i< timeOutInit.length ; i++){
-		clearTimeout(timeOutInit[i]);	
-	}
-	if(!eatCandy){
-		for(var j= 0; j< timeOutCandy.length ; j++){
-			clearTimeout(timeOutCandy[j]);
-		}
-	}
+	ClearInterval();
 	numOfEatenBalls=0;
 	eatCandy=false;
 	timeOutCandy=new Array();
@@ -72,7 +64,6 @@ function initParams(){
 		Pause();
 	
 	isIntervalSet = true;
-//	setTimeout(StartInterval,1000);
 }
 
 function initMonsters(){
@@ -100,7 +91,7 @@ function initMonsters(){
 			
 		}
 		else if(i==2){
-			monsterPlace.lastX =11 ;
+			monsterPlace.lastX =11;
 			monsterPlace.lastY = 0;
 			monsterPlace.x=11;
 			monsterPlace.y=0;
@@ -123,7 +114,6 @@ function initMonsters(){
 }
 
 
-//TODO: add one medicine (trufa)
 function Start() {
 	initParams();
 	for (var i = 0; i < 12; i++) {
@@ -407,10 +397,12 @@ function ClearInterval() {
     window.clearInterval(interval);
 	isIntervalSet = false
 	for(var i= 0; i< timeOutInit.length ; i++){
-		clearTimeout(timeOutInit[i]);
+		clearTimeout(timeOutInit[i]);	
 	}
-	for(var j= 0; j< timeOutCandy.length ; j++){
-		clearTimeout(timeOutCandy[j]);
+	if(!eatCandy){
+		for(var j= 0; j< timeOutCandy.length ; j++){
+			clearTimeout(timeOutCandy[j]);
+		}
 	}
 }
 
@@ -464,6 +456,14 @@ function UpdatePosition() {
 			clearTimeout(timeOutCandy[j]);
 		}
 	}
+	for(var i=0; i<monstersPlaces.length;i++){
+		var deltaX = monstersPlaces[i].x - shape.i;
+		var deltaY = monstersPlaces[i].y - shape.j;
+		if(deltaX==0 && deltaY==0){
+			livesAndScoreDown(i);
+			initMonsters();
+		}
+	}
 
 	var currentTime = new Date();
 	time_elapsed = (currentTime - start_time) / 1000;
@@ -471,9 +471,9 @@ function UpdatePosition() {
 	if(lives <= 0){
 		timeOutInit.push(setTimeout(DieAsMonster,50));
 	}
-	var num= document.getElementById("showAmountBalls").innerHTML.value;
+	var num= document.getElementById("showAmountBalls").innerHTML;
 	
-	if(num===numOfEatenBalls){
+	if(parseInt(num)==numOfEatenBalls){
 		timeOutInit.push(setTimeout(End,50));
 	}
 }
@@ -484,7 +484,6 @@ function DieAsTimeout(){
 	}
 	else{
 		if (!paused) Pause();
-		ClearInterval();
 		window.alert("You are better than "+score+" points!");
 		Start();
 	}
@@ -492,14 +491,12 @@ function DieAsTimeout(){
 
 function DieAsMonster(){
 	if (!paused) Pause();
-	ClearInterval();
 	window.alert("Loser!");
 	Start();
 }
 
 function End(){
 	if (!paused) Pause();
-	ClearInterval();
 	window.alert("Winner!!!");
 
 	Start();
