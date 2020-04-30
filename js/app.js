@@ -3,6 +3,7 @@ var isUp=false;
 var isDown=false;
 var isLeft=true;
 var isRight=false;
+
 function Pause() {
     if (paused) {
         bgSound.play();
@@ -45,10 +46,57 @@ function initParams(){
 		numOf15PointBall++;
 		numOf25PointBall++;
 	}
+	
 	maxScore=numOf5PointBall*5+numOf15PointBall*15+numOf25PointBall*25;
 	disqualifications = 5;//num of disqualifications to fail
 	if(paused)
 		Pause();
+}
+
+function initMonsters(){
+	for(var i = 0; i < amountMon.valueAsNumber ; i++ ){
+		var monsterPlace = new Object();
+		if(i===0){
+			monsterPlace.lastX =0 ;
+			monsterPlace.lastY = 0;
+			monsterPlace.x=0;
+			monsterPlace.y=0;
+			board[monsterPlace.x][monsterPlace.y]=8;
+			monstersPlaces[i]=monsterPlace;
+			monsterPlace.direction = "right";
+
+		}
+		else if(i==1){
+			monsterPlace.lastX =0 ;
+			monsterPlace.lastY = 9;
+			monsterPlace.x=0;
+			monsterPlace.y=9;
+			board[monsterPlace.x][monsterPlace.y]=3;
+			monstersPlaces[i]=monsterPlace;
+			monsterPlace.direction = "down";
+			
+		}
+		else if(i==2){
+			monsterPlace.lastX =11 ;
+			monsterPlace.lastY = 0;
+			monsterPlace.x=11;
+			monsterPlace.y=0;
+			board[monsterPlace.x][monsterPlace.y]=3;
+			monstersPlaces[i]=monsterPlace;
+			monsterPlace.direction = "up";
+		}
+		else if(i==3){
+			monsterPlace.lastX =11 ;
+			monsterPlace.lastY = 9;
+			monsterPlace.x=11;
+			monsterPlace.y=9;
+			board[monsterPlace.x][monsterPlace.y]=3;
+			monstersPlaces[i]=monsterPlace;
+			monsterPlace.direction = "left";
+
+
+		}
+	}
 }
 
 //TODO: add one medicine (trufa)
@@ -58,28 +106,7 @@ function Start() {
 		board[i] = new Array();
 	}
 
-	for(var i = 0; i < amountMon.valueAsNumber ; i++ ){
-		if(i===0){
-			var monsterPlace = [0,0];
-			board[monsterPlace[0]][monsterPlace[1]]=8;
-			monstersPlaces[i]=monsterPlace;
-		}
-		else if(i==1){
-			var monsterPlace = [0,9];
-			board[monsterPlace[0]][monsterPlace[1]]=3;
-			monstersPlaces[i]=monsterPlace;
-		}
-		else if(i==2){
-			var monsterPlace = [11,0];
-			board[monsterPlace[0]][monsterPlace[1]]=3;
-			monstersPlaces[i]=monsterPlace;
-		}
-		else if(i==3){
-			var monsterPlace = [11,9];
-			board[monsterPlace[0]][monsterPlace[1]]=3;
-			monstersPlaces[i]=monsterPlace;
-		}
-	}
+	initMonsters();
 
 	for (var i = 0; i < 12; i++) {
 		//put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
@@ -135,7 +162,11 @@ function Start() {
 	
 	var timeotOfGame=amountTime.valueAsNumber*1000;
 	setTimeout(DieAsTimeout,timeotOfGame);
-	
+
+	for(var time=0; time<timeotOfGame ; time=time+1000){
+		setTimeout(moveMonsters,time);
+	}
+
 	keysDown = {};
 	addEventListener(
 		"keydown",
@@ -164,8 +195,6 @@ function findRandomEmptyCell(board) {
 	return [i, j];
 }
 
-//update arrows from settings (from init)
-//update direction of packman
 function GetKeyPressed() {
 	if (keysDown[moveUp]) {
 		isUp = true;
@@ -196,7 +225,6 @@ function GetKeyPressed() {
 		return 4;
 	}
 }
-
 
 function Draw() {
 	canvas.width = canvas.width; //clean board
@@ -281,22 +309,10 @@ function Draw() {
 			}
 		}
 	}
-	for(var i=0;i<amountMon.valueAsNumber;i++){
-		if(i===0){
-			var extraMonster = new Image(40,40);
-			extraMonster.src="monster2.gif";
-			context.beginPath();
-			context.drawImage(extraMonster,monstersPlaces[i][0]*50+5,monstersPlaces[i][1]*50+5,40,40);
-			context.fill();
-		}
-		else{
-			var regularMonster = new Image(40,40);
-			regularMonster.src="monster.gif";
-			context.beginPath();
-			context.drawImage(regularMonster,monstersPlaces[i][0]*50+5,monstersPlaces[i][1]*50+5,40,40);
-			context.fill();
-		}
-	}
+
+	drawMonsters();
+
+	
 }
 
 function UpdatePosition() {
@@ -396,4 +412,195 @@ function addRanBalls(i ,j){
 	}
 	
 }
+
+// function moveMonsters(){
+
+// 	for(var i=0; i<monstersPlaces.length ; i++){
+// 		var deltaX= monstersPlaces[i][0]-shape.i;
+// 		var deltaY= monstersPlaces[i][1]-shape.j;
+		
+// 		if(deltaX>0  && board[monstersPlaces[i][0]-1][monstersPlaces[i][1]]!=4){  // move left monster
+// 			monstersPlaces[i][0]= monstersPlaces[i][0]-1;
+// 		}
+// 		else if(deltaX<0  && board[monstersPlaces[i][0]+1][monstersPlaces[i][1]]!=4){ // move right monster
+// 			monstersPlaces[i][0]= monstersPlaces[i][0]+1;
+// 		}
+// 		else if(deltaY>0 && board[monstersPlaces[i][0]][monstersPlaces[i][1]-1]!=4 ){ // move up monster
+// 			monstersPlaces[i][1]=	monstersPlaces[i][1]-1;
+// 		}
+// 		else if(deltaY<0 && board[monstersPlaces[i][0]][monstersPlaces[i][1]+1]!=4){ // move down monster
+// 			monstersPlaces[i][1]=monstersPlaces[i][1]+1;
+// 		}
+		
+// 		else if(deltaY===0 && deltaX===0){ 	// chech collision -- add to pac man
+// 			livesAndScoreDown(i);
+// 			initMonsters();
+// 		}
+// 		else{
+// 			if(deltaX===0){
+				
+// 				if(deltaY>0 && board[monstersPlaces[i][0]-1][monstersPlaces[i][1]]!=4){
+// 					monstersPlaces[i][0]=monstersPlaces[i][0]-1;
+
+// 				}
+// 				else{
+// 					monstersPlaces[i][0]=monstersPlaces[i][0]+1;
+// 				}
+// 			}
+// 			else{
+// 				if( deltaX>0 && board[monstersPlaces[i][0]][monstersPlaces[i][1]-1]!=4 ){
+// 					monstersPlaces[i][1]= monstersPlaces[i][1]-1;
+
+// 				}
+// 				else{
+// 					monstersPlaces[i][1]= monstersPlaces[i][1]+1;
+// 				}
+
+// 			}
+// 		}
+// 	}
+// 	drawMonsters();
+// }
+
+function livesAndScoreDown(i){
+	if(i===0){
+		score=score-20;
+		lives= lives-2;
+	}
+	else{
+		score=score-10;
+		lives= lives-1;
+	}
+}
+
+function drawMonsters(){
+	for(var i=0;i<amountMon.valueAsNumber;i++){
+		if(i===0){
+			var extraMonster = new Image(40,40);
+			extraMonster.src="monster2.gif";
+			context.beginPath();
+			context.drawImage(extraMonster,monstersPlaces[i].x*50+5,monstersPlaces[i].y*50+5,40,40);
+			context.fill();
+		}
+		else{
+			var regularMonster = new Image(40,40);
+			regularMonster.src="monster.gif";
+			context.beginPath();
+			context.drawImage(regularMonster,monstersPlaces[i].x*50+5,monstersPlaces[i].y*50+5,40,40);
+			context.fill();
+		}
+	}
+}
+
+function moveMonsters() {
+for (var i = 0; i < monstersPlaces.length; i++){
+	var monster = monstersPlaces[i];
+	monster.lastX = monster.x;
+	monster.lastY = monster.y;
+	var deltaX = monster.x - shape.i;
+	var deltaY = monster.y - shape.j;
+
+	var moveSuccessful = false;
+	// Check which direction the ghost would like to move
+	if (Math.abs(deltaX) > Math.abs(deltaY)){
+		if (deltaX > 0) moveSuccessful = moveMonster(monster, "left",i);
+		else moveSuccessful = moveMonster(monster, "right",i);
+		if (!moveSuccessful){
+			if (deltaY > 0) moveSuccessful = moveMonster(monster, "up",i);
+			else moveSuccessful = moveMonster(monster, "down",i);
+		}
+	}
+	else {
+		if (deltaY > 0) moveSuccessful = moveMonster(monster, "up",i);
+		else moveSuccessful = moveMonster(monster, "down",i);
+		if (!moveSuccessful){
+			if (deltaX > 0) moveSuccessful = moveMonster(monster, "left",i);
+			else moveSuccessful = moveMonster(monster, "right",i);
+		}
+	}
+	// continue in same direction
+	if (!moveSuccessful) {
+		if (monster.direction === "up" && isLegalMove(monster.y-1,monster.x,i)) {
+			monster.y--;
+			moveSuccessful = true;
+		}
+		if (monster.direction === "down" && isLegalMove(monster.y+1,monster.x,i)) {
+			monster.y++;
+			moveSuccessful = true;
+		}
+		if (monster.direction === "left" && isLegalMove(monster.y,monster.x-1,i)) {
+			monster.x--;
+			moveSuccessful = true;
+		}
+		if (monster.direction === "right" && isLegalMove(monster.y,monster.x+1,i)) {
+			monster.x++;
+			moveSuccessful = true;
+		}
+	}
+	// random direction
+	if (!moveSuccessful) {
+		if (monster.direction === "left" || monster.direction === "right") {
+			if (isLegalMove(monster.y-1, monster.x,i)) {
+				monster.direction = "up";
+				monster.y--;
+			} else if (isLegalMove(monster.y+1, monster.x,i)) {
+				monster.direction = "down";
+				monster.y++;
+			}
+		}
+		else {
+			if (isLegalMove(monster.y,monster.x-1,i)) {
+				monster.direction = "left";
+				monster.x--;
+			} else if (isLegalMove(monster.y,monster.x+1,i)){
+				monster.direction = "right";
+				monster.x++;
+			}
+		}
+	}
+}
+drawMonsters();
+}
+
+function isLegalMove(y,x,ghostID) {
+if (board[x][y] == 4) return false;
+for (var i = 0; i < monstersPlaces.length; i++){
+	if (i !== ghostID && monstersPlaces[i].x === x && monstersPlaces[i].y === y)
+		return false;
+}
+return true;
+}
+
+function moveMonster(ghost, direction,i) {
+var moveSuccessful = false;
+try {
+	// if wants to go in certain direction and is not currently going in the opposite direction without blockages
+	if (direction === "up" && isLegalMove(ghost.y - 1, ghost.x, i)
+		&& !( ghost.direction === "down" && isLegalMove(ghost.y + 1, ghost.x, i))) {
+		ghost.direction = "up";
+		ghost.y--;
+		moveSuccessful = true
+	} else if (direction === "down" && isLegalMove(ghost.y + 1, ghost.x, i)
+		&& !( ghost.direction === "up" && isLegalMove(ghost.y - 1, ghost.x, i))) {
+		ghost.direction = "down";
+		ghost.y++;
+		moveSuccessful = true
+	} else if (direction === "left" && isLegalMove(ghost.y, ghost.x - 1, i)
+		&& !(ghost.direction === "right" && isLegalMove(ghost.y, ghost.x + 1, i))) {
+		ghost.direction = "left";
+		ghost.x--;
+		moveSuccessful = true
+	} else if (direction === "right" && isLegalMove(ghost.y, ghost.x + 1, i)
+		&& !(ghost.direction === "left" && isLegalMove(ghost.y, ghost.x - 1, i))) {
+		ghost.direction = "right";
+		ghost.x++;
+		moveSuccessful = true
+	}
+} catch (e) {
+	return false;
+}
+return moveSuccessful;
+}
+
+
 
