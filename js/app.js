@@ -48,7 +48,7 @@ function initParams(){
 	}
 	
 	maxScore=numOf5PointBall*5+numOf15PointBall*15+numOf25PointBall*25;
-	disqualifications = 5;//num of disqualifications to fail
+	lives = 5;//num of disqualifications to fail
 	if(paused)
 		Pause();
 }
@@ -105,9 +105,7 @@ function Start() {
 	for (var i = 0; i < 12; i++) {
 		board[i] = new Array();
 	}
-
 	initMonsters();
-
 	for (var i = 0; i < 12; i++) {
 		//put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
 		for (var j = 0; j < 10; j++) {
@@ -159,6 +157,9 @@ function Start() {
 		numOf25PointBall--;
 		food_remain.valueAsNumber--;
 	}
+
+	var emptyCell = findRandomEmptyCell(board);
+	board[emptyCell[0]][emptyCell[1]] = 1;
 	
 	var timeotOfGame=amountTime.valueAsNumber*1000;
 	setTimeout(DieAsTimeout,timeotOfGame);
@@ -307,12 +308,16 @@ function Draw() {
 				context.fillStyle = "grey"; //color
 				context.fill();
 			}
+			if(board[i][j]==1){
+				let imgMedicine=new Image(40,40);
+				imgMedicine.src="css/liveImg.jpg"
+				context.beginPath();
+				context.drawImage(imgMedicine,center.x+5, center.y+5,40,40);
+				context.fill();
+			}
 		}
 	}
-
 	drawMonsters();
-
-	
 }
 
 function UpdatePosition() {
@@ -347,12 +352,16 @@ function UpdatePosition() {
 	if (board[shape.i][shape.j] == 7) {
 		score=score+25;
 	}
+	if((board[shape.i][shape.j] == 1)){
+		lives++;
+	}
 	board[shape.i][shape.j] = 2;
 	Draw();
+
 	var currentTime = new Date();
 	time_elapsed = (currentTime - start_time) / 1000;
 	//faild from disqualifications because of the monster
-	if(disqualifications <= 0){
+	if(lives <= 0){
 		setTimeout(DieAsMonster,50);
 	}
 	if(maxScore==score){
@@ -412,55 +421,6 @@ function addRanBalls(i ,j){
 	}
 	
 }
-
-// function moveMonsters(){
-
-// 	for(var i=0; i<monstersPlaces.length ; i++){
-// 		var deltaX= monstersPlaces[i][0]-shape.i;
-// 		var deltaY= monstersPlaces[i][1]-shape.j;
-		
-// 		if(deltaX>0  && board[monstersPlaces[i][0]-1][monstersPlaces[i][1]]!=4){  // move left monster
-// 			monstersPlaces[i][0]= monstersPlaces[i][0]-1;
-// 		}
-// 		else if(deltaX<0  && board[monstersPlaces[i][0]+1][monstersPlaces[i][1]]!=4){ // move right monster
-// 			monstersPlaces[i][0]= monstersPlaces[i][0]+1;
-// 		}
-// 		else if(deltaY>0 && board[monstersPlaces[i][0]][monstersPlaces[i][1]-1]!=4 ){ // move up monster
-// 			monstersPlaces[i][1]=	monstersPlaces[i][1]-1;
-// 		}
-// 		else if(deltaY<0 && board[monstersPlaces[i][0]][monstersPlaces[i][1]+1]!=4){ // move down monster
-// 			monstersPlaces[i][1]=monstersPlaces[i][1]+1;
-// 		}
-		
-// 		else if(deltaY===0 && deltaX===0){ 	// chech collision -- add to pac man
-// 			livesAndScoreDown(i);
-// 			initMonsters();
-// 		}
-// 		else{
-// 			if(deltaX===0){
-				
-// 				if(deltaY>0 && board[monstersPlaces[i][0]-1][monstersPlaces[i][1]]!=4){
-// 					monstersPlaces[i][0]=monstersPlaces[i][0]-1;
-
-// 				}
-// 				else{
-// 					monstersPlaces[i][0]=monstersPlaces[i][0]+1;
-// 				}
-// 			}
-// 			else{
-// 				if( deltaX>0 && board[monstersPlaces[i][0]][monstersPlaces[i][1]-1]!=4 ){
-// 					monstersPlaces[i][1]= monstersPlaces[i][1]-1;
-
-// 				}
-// 				else{
-// 					monstersPlaces[i][1]= monstersPlaces[i][1]+1;
-// 				}
-
-// 			}
-// 		}
-// 	}
-// 	drawMonsters();
-// }
 
 function livesAndScoreDown(i){
 	if(i===0){
@@ -557,6 +517,10 @@ for (var i = 0; i < monstersPlaces.length; i++){
 				monster.x++;
 			}
 		}
+	}
+	if(deltaX==0 && deltaY==0){
+		livesAndScoreDown(i);
+		initMonsters();
 	}
 }
 drawMonsters();
