@@ -472,6 +472,7 @@ function UpdatePosition() {
 		timeOutInit.push(setTimeout(DieAsMonster,50));
 	}
 	var num= document.getElementById("showAmountBalls").innerHTML.value;
+	
 	if(num===numOfEatenBalls){
 		timeOutInit.push(setTimeout(End,50));
 	}
