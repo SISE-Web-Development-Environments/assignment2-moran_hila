@@ -1,5 +1,8 @@
 var monstersPlaces=[];
-
+var isUp=false;
+var isDown=false;
+var isLeft=true;
+var isRight=false;
 function Pause() {
     if (paused) {
         bgSound.play();
@@ -51,10 +54,34 @@ function initParams(){
 //TODO: add one medicine (trufa)
 function Start() {
 	initParams();
-	var timeotOfGame=amountTime.valueAsNumber*1000;
-	setTimeout(DieAsTimeout,timeotOfGame);
 	for (var i = 0; i < 12; i++) {
 		board[i] = new Array();
+	}
+
+	for(var i = 0; i < amountMon.valueAsNumber ; i++ ){
+		if(i===0){
+			var monsterPlace = [0,0];
+			board[monsterPlace[0]][monsterPlace[1]]=8;
+			monstersPlaces[i]=monsterPlace;
+		}
+		else if(i==1){
+			var monsterPlace = [0,9];
+			board[monsterPlace[0]][monsterPlace[1]]=3;
+			monstersPlaces[i]=monsterPlace;
+		}
+		else if(i==2){
+			var monsterPlace = [11,0];
+			board[monsterPlace[0]][monsterPlace[1]]=3;
+			monstersPlaces[i]=monsterPlace;
+		}
+		else if(i==3){
+			var monsterPlace = [11,9];
+			board[monsterPlace[0]][monsterPlace[1]]=3;
+			monstersPlaces[i]=monsterPlace;
+		}
+	}
+
+	for (var i = 0; i < 12; i++) {
 		//put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
 		for (var j = 0; j < 10; j++) {
 			if (
@@ -106,17 +133,8 @@ function Start() {
 		food_remain.valueAsNumber--;
 	}
 	
-	for(var i = 0; i < amountMon.valueAsNumber ; i++ ){
-		var monsterPlace = findRandomEmptyCell(board);
-		if(i===0){
-			board[monsterPlace[0]][monsterPlace[1]]=8;
-			monstersPlaces[i]=monsterPlace;
-		}
-		else{
-			board[monsterPlace[0]][monsterPlace[1]]=3;
-			monstersPlaces[i]=monsterPlace;
-		}
-	}
+	var timeotOfGame=amountTime.valueAsNumber*1000;
+	setTimeout(DieAsTimeout,timeotOfGame);
 	
 	keysDown = {};
 	addEventListener(
@@ -150,15 +168,31 @@ function findRandomEmptyCell(board) {
 //update direction of packman
 function GetKeyPressed() {
 	if (keysDown[moveUp]) {
+		isUp = true;
+		isDown = false;
+		isLeft = false;
+		isRight = false;
 		return 1;
 	}
 	if (keysDown[moveDown]) {
+		isUp = false;
+		isDown = true;
+		isLeft = false;
+		isRight = false;
 		return 2;
 	}
 	if (keysDown[moveLeft]) {
+		isUp = false;
+		isDown = false;
+		isLeft = true;
+		isRight = false;
 		return 3;
 	}
 	if (keysDown[moveRight]) {
+		isUp = false;
+		isDown = false;
+		isLeft = false;
+		isRight = true;
 		return 4;
 	}
 }
@@ -180,15 +214,53 @@ function Draw() {
 			if (board[i][j] == 2) {
 				center.x= i*50+25;
 				center.y= j*50+25;
-				context.beginPath();
-				context.arc(center.x, center.y, 20, 0.15 * Math.PI, 1.85 * Math.PI); // half circle
-				context.lineTo(center.x, center.y);
-				context.fillStyle = pac_color; //color
-				context.fill();
-				context.beginPath();
-				context.arc(center.x +5, center.y -10, 3, 0, 2 * Math.PI); // circle
-				context.fillStyle = "black"; //color
-				context.fill();
+				if(isUp){		//move up
+					context.beginPath();
+					context.arc(center.x, center.y, 20, 1.65 * Math.PI, 3.35 * Math.PI);
+					context.lineTo(center.x, center.y);
+					context.fillStyle =pac_color;
+					context.fill();				
+    				context.beginPath();
+					context.arc(center.x +15, center.y-5, 3, 0, 2 * Math.PI); // circle
+					context.fillStyle = "black"; //color
+					context.fill();
+				}
+				else if(isDown){ //move down
+					context.beginPath();
+					context.arc(center.x, center.y, 20, 0.65 * Math.PI, 2.35 * Math.PI);
+					context.lineTo(center.x, center.y);
+					context.fillStyle =pac_color;
+					context.fill();				
+    				context.beginPath();
+					context.arc(center.x +15, center.y-5, 3, 0, 2 * Math.PI); // circle
+					context.fillStyle = "black"; //color
+					context.fill();
+				}
+				else if(isLeft){ //move left
+
+					context.beginPath();
+					context.arc(center.x, center.y, 20, 1.15 * Math.PI, 2.85 * Math.PI);
+					context.lineTo(center.x, center.y);
+					context.fillStyle =pac_color;
+					context.fill();				
+    				context.beginPath();
+					context.arc(center.x +5, center.y-10, 3, 0, 2 * Math.PI); // circle
+					context.fillStyle = "black"; //color
+					context.fill();
+
+				}
+				else if(isRight){ //move right
+					context.beginPath();
+					context.arc(center.x, center.y, 20, 0.15 * Math.PI, 1.85 * Math.PI);
+					context.lineTo(center.x, center.y);
+					context.fillStyle =pac_color;
+					context.fill();				
+    				context.beginPath();
+					context.arc(center.x +5, center.y-10, 3, 0, 2 * Math.PI); // circle
+					context.fillStyle = "black"; //color
+					context.fill();
+				}
+
 			} else if (board[i][j] == 5) {
 				context.beginPath();
 				context.drawImage(imgColor5,center.x+5, center.y+5,40,40);
