@@ -61,6 +61,7 @@
             var shape = new Object();
             var board= new Array();
             var score = 0;
+            var lives= 5;
             var pac_color= "yellow";
             var start_time= new Date();
             var time_elapsed=0;
@@ -325,6 +326,33 @@
                     <span class="Settings-form-title">Settings:</span>
                     <div class="grid-container-BallsAndShiftButtuns">
                         <div class="grid-item-BallsAndShiftButtuns">
+
+                            <table>
+                                <td>Amount of balls:</td>
+                                    <td>
+                                        <input type="number" id="amountBalls" name="tentacles" min="50" max="90" required="">
+                                        <label id="amountBallsError" style="display: none;">Must be betwen 50 to 90</label>
+                                    </td>
+                                <tr>
+                                    <td>Amount of monsters:</td>
+                                    <td>
+                                        <input type="number" id="amountMonsters" name="tentacles" min="1" max="4" required="">
+                                        <label id="amountMonstersError" style="display: none;">Must be betwen 1 to 4</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Game Time:</td>
+                                    <td>
+                                        <input type="number" id="amountTime" name="tentacles" min="60" required="">
+                                        <label id="amountTimeError" style="display: none;">Must be at lest 60</label>
+                                    </td>
+                                </tr>
+                            </table>  
+
+                        </div>
+                    </div>
+                    <div class="grid-container-MonsterAndTime">
+                        <div class="grid-item-MonsterAndTime">
                             <label type="colors">Colors:</label>
                             <table>
                                 <td>5 point:</td>
@@ -379,29 +407,6 @@
                                             </tr>
                             </table>
                             <label id="ColorError" style="display: none;">Must be diffrent color</label>
-
-                        </div>
-                    </div>
-                    <div class="grid-container-MonsterAndTime">
-                        <div class="grid-item-MonsterAndTime">
-                            <table>
-                                <td>Amount of balls:</td>
-                                    <td>
-                                        <input type="number" id="amountBalls" name="tentacles" min="50" max="90" required="">
-                                    </td>
-                                <tr>
-                                    <td>Amount of monsters:</td>
-                                    <td>
-                                        <input type="number" id="amountMonsters" name="tentacles" min="1" max="4" required="">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Game Time:</td>
-                                    <td>
-                                        <input type="number" id="amountTime" name="tentacles" min="60" required="">
-                                    </td>
-                                </tr>
-                            </table>  
                         </div>
                         <div class="grid-item-MonsterAndTime">
                             <label type="BallsAndShift">Set the game's shift button:</label>
@@ -426,7 +431,7 @@
                             <button type="button" onclick="randomSettings()">Random Settings</button>
                         </div>
                         <div class="grid-item-Buttons">
-                            <button type="button" onclick="applySettings()">Apply Settings</button>
+                            <button type="button" value="Submit" onclick="applySettings()">Apply Settings</button>
                         </div>
                     </div>
                 </form>
@@ -441,16 +446,27 @@
                 <div class="UserNameDiv" >  
                     <p id="userName"> </p>
                 </div>
-                <div id="scoreDiv">
-                    <label for="lblScore">SCORE:</label>
-                    <input id="lblScore" type="text" />
-                </div>
+                <table id="valuesInputGame">
+                    <tr>
+                        <td class="settTd"> <label for="lblScore">SCORE:</label></td>
+                        <td class="settTd">   <input id="lblScore" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td class="settTd">   <label for="lblTime">TIME:</label></td>
+                        <td class="settTd">  <input id="lblTime" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td class="settTd"> <label for="lblLive">Lives:</label></td>
+                        <td class="settTd">  <input id="lblLive" type="text" /></td>
+                    </tr>
+                </table>
+            
+            </br>
+                <button type="button" id="restart" onclick="Start()">Restart</button>
+            </br>
+            </br>
+            <button id="sound" onclick="Pause()" ><img id="soundImg"  src="css/soundButton.png" width="40" height="40"></button>
 
-                <div id="timeDiv">
-                    <label for="lblTime">TIME:</label>
-                    <input id="lblTime" type="text" />
-                </div>
-                <button id="sound" onclick="Pause()" ><img id="soundImg"  src="css/soundButton.png" width="40" height="40"></button>
             </div>
 
             <div class="game">
@@ -494,15 +510,32 @@
                     </tr>
                     <tr>
                         <td class="settTd">Color of 5 point balls:</td>
-                        <td class="settTd" id="show5Point"></td>
+                        <td class="settTd"><img id="image1set" style="width: 30px; height:30px;"></td>
                     </tr>
                     <tr>
                         <td class="settTd"> Color of 15 point balls:</td>
-                        <td class="settTd" id="showpoint15"></td>
+                        <td class="settTd" ><img id="image2set" style="width: 30px; height:30px;"></td>
                     </tr>
                     <tr>
                         <td class="settTd"> Color of 25 point balls:</td>
-                        <td class="settTd" id="show25Point"></td>
+                        <td class="settTd" ><img id="image3set" style="width: 30px; height:30px;"></td>
+                    </tr>
+                    <tr>
+                        <td class="settTd"> 
+                            Weak monster:                            
+                        </td>
+                        <td class="settTd" id="showWeakMonster">
+                            <img src="monster.gif" width="30" height="30">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="settTd"> 
+                            Strong monster:
+                        </td>
+                        <td class="settTd" id="showStrongMonster">
+                            <img src="monster2.gif" width="30" height="30">
+
+                        </td>
                     </tr>
                   </table>
             </div>
