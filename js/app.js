@@ -179,7 +179,7 @@ function Start() {
 	
 	timeOutInit.push(setTimeout(DieAsTimeout,timeotOfGame));
 
-	for(var time=0; time<timeotOfGame ; time=time+1000){
+	for(var time=1000; time<timeotOfGame ; time=time+1000){
 		timeOutInit.push(setTimeout(moveMonsters,time));
 	}
 	for(var time2=0; time2<timeotOfGame ; time2=time2+2000){
