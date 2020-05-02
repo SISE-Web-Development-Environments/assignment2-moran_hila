@@ -95,7 +95,7 @@ function loginSettings(){
     var Username = document.getElementById("usernameId").value;
         var Password = document.getElementById("passwordId").value;
         if(isExist(Username,Password)==true){
-            document.getElementById("userName").innerHTML = "Welcome: "+getFullName(Username);
+            document.getElementById("userName").innerHTML = "Welcome: "+Username;
             settings_nav();
         }
         else{
