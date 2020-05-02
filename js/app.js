@@ -175,8 +175,7 @@ function Start() {
 	var emptyCell = findRandomEmptyCell(board);
 	board[emptyCell[0]][emptyCell[1]] = 1;
 	
-	candyCell = findRandomEmptyCell(board);
-	board[candyCell[0]][candyCell[1]] = 9;
+	candyCell = [0,0];
 	
 	timeOutInit.push(setTimeout(DieAsTimeout,timeotOfGame));
 
