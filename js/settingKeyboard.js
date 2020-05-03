@@ -116,7 +116,7 @@ function checkKeyIsValidLetterAndNumber(key) {
     }
 }
 
-$("#5Point").change(function(){
+$("#5Point").change(function(event){
     if (event.target.value == "Azure") {
         image1.src =AzureBall.src;
     } else if (event.target.value == "Blue") {
@@ -160,7 +160,7 @@ $("#5Point").change(function(){
 //     }
 // }
 
-$("#15Point").change(function(){
+$("#15Point").change(function(event){
     if (event.target.value == "Azure") {
         image2.src =AzureBall.src;
     } else if (event.target.value == "Blue") {
@@ -205,7 +205,7 @@ $("#15Point").change(function(){
 // }
 
 
-$("#25Point").change(function(){
+$("#25Point").change(function(event){
     if (event.target.value == "Azure") {
         image3.src =AzureBall.src;
     } else if (event.target.value == "Blue") {
