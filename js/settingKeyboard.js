@@ -118,23 +118,23 @@ function checkKeyIsValidLetterAndNumber(key) {
 
 $("#5Point").change(function(){
     if (event.target.value == "Azure") {
-        document.getElementById("image1").src =AzureBall;
+        image1.src =AzureBall.src;
     } else if (event.target.value == "Blue") {
-        document.getElementById("image1").src =BlueBall;
+        image1.src =BlueBall.src;
     } else if (event.target.value == "Brown") {
-        document.getElementById("image1").src = BrownBall;
+        image1.src = BrownBall.src;
     } else if (event.target.value == "Green") {
-        document.getElementById("image1").src = GreenBall;
+        image1.src = GreenBall.src;
     } else if (event.target.value == "Pink") {
-        document.getElementById("image1").src = PinkBall;
+        image1.src = PinkBall.src;
     } else if (event.target.value == "Red") {
-        document.getElementById("image1").src = RedBall;
+        image1.src = RedBall.src;
     } else if (event.target.value == "Yellow") {
-        document.getElementById("image1").src = YellowBall;
+        image1.src = YellowBall.src;
     } else if (event.target.value == "Purple") {
-        document.getElementById("image1").src = PurpleBall;
+        image1.src = PurpleBall.src;
     } else if (event.target.value == "Gray") {
-        document.getElementById("image1").src = GrayBall;
+        image1.src = GrayBall.src;
     }
 });
 
@@ -162,23 +162,23 @@ $("#5Point").change(function(){
 
 $("#15Point").change(function(){
     if (event.target.value == "Azure") {
-        document.getElementById("image2").src = AzureBall;
+        image2.src =AzureBall.src;
     } else if (event.target.value == "Blue") {
-        document.getElementById("image2").src = BlueBall;
+        image2.src =BlueBall.src;
     } else if (event.target.value == "Brown") {
-        document.getElementById("image2").src = BrownBall;
+        image2.src = BrownBall.src;
     } else if (event.target.value == "Green") {
-        document.getElementById("image2").src = GreenBall;
+        image2.src = GreenBall.src;
     } else if (event.target.value == "Pink") {
-        document.getElementById("image2").src = PinkBall;
+        image2.src = PinkBall.src;
     } else if (event.target.value == "Red") {
-        document.getElementById("image2").src = RedBall;
+        image2.src = RedBall.src;
     } else if (event.target.value == "Yellow") {
-        document.getElementById("image2").src = YellowBall;
+        image2.src = YellowBall.src;
     } else if (event.target.value == "Purple") {
-        document.getElementById("image2").src = PurpleBall;
+        image2.src = PurpleBall.src;
     } else if (event.target.value == "Gray") {
-        document.getElementById("image2").src = GrayBall;
+        image2.src = GrayBall.src;
     }
 });
 
@@ -207,23 +207,23 @@ $("#15Point").change(function(){
 
 $("#25Point").change(function(){
     if (event.target.value == "Azure") {
-        document.getElementById("image3").src = AzureBall;
+        image3.src =AzureBall.src;
     } else if (event.target.value == "Blue") {
-        document.getElementById("image3").src = BlueBall;
-    } else if (event.target.value == "Gray") {
-        document.getElementById("image3").src = GrayBall;
+        image3.src =BlueBall.src;
     } else if (event.target.value == "Brown") {
-        document.getElementById("image3").src = BrownBall;
+        image3.src = BrownBall.src;
     } else if (event.target.value == "Green") {
-        document.getElementById("image3").src = GreenBall;
+        image3.src = GreenBall.src;
     } else if (event.target.value == "Pink") {
-        document.getElementById("image3").src = PinkBall;
+        image3.src = PinkBall.src;
     } else if (event.target.value == "Red") {
-        document.getElementById("image3").src = RedBall;
+        image3.src = RedBall.src;
     } else if (event.target.value == "Yellow") {
-        document.getElementById("image3").src = YellowBall;
+        image3.src = YellowBall.src;
     } else if (event.target.value == "Purple") {
-        document.getElementById("image3").src = PurpleBall;
+        image3.src = PurpleBall.src;
+    } else if (event.target.value == "Gray") {
+        image3.src = GrayBall.src;
     }
 });
 
