@@ -288,13 +288,32 @@
 
     <!--SettingsDiv-->
     <div id="SettingsDiv">
+        <img id="AzureBall" src="css/picturesOfBalls/AzureBall.png"  style="display:none" height="30px" width="30px"/>
+        <img id="BlueBall" src="css/picturesOfBalls/BlueBall.png"  style="display:none" height="30px" width="30px"/>
+        <img id="BrownBall" src="css/picturesOfBalls/BrownBall.png"  style="display:none" height="30px" width="30px"/>
+        <img id="GreenBall" src="css/picturesOfBalls/GreenBall.png"  style="display:none" height="30px" width="30px"/>
+        <img id="PinkBall" src="css/picturesOfBalls/PinkBall.png"  style="display:none" height="30px" width="30px"/>
+        <img id="RedBall" src="css/picturesOfBalls/RedBall.png"  style="display:none" height="30px" width="30px"/>
+        <img id="YellowBall" src="css/picturesOfBalls/YellowBall.png"  style="display:none" height="30px" width="30px"/>
+        <img id="PurpleBall" src="css/picturesOfBalls/PurpleBall.png"  style="display:none" height="30px" width="30px"/>
+        <img id="GrayBall" src="css/picturesOfBalls/GrayBall.png"  style="display:none" height="30px" width="30px"/>
+        <script>
+            var AzureBall=document.getElementById("AzureBall");
+            var BlueBall= document.getElementById("BlueBall");
+            var BrownBall=document.getElementById("BrownBall");
+            var GreenBall=document.getElementById("GreenBall");
+            var PinkBall= document.getElementById("PinkBall");
+            var RedBall=document.getElementById("RedBall");
+            var YellowBall=document.getElementById("YellowBall");
+            var PurpleBall=document.getElementById("PurpleBall");
+            var GrayBall=document.getElementById("GrayBall");
+        </script>
         <div class="Settings-container">
             <div class="Settings-frame">
                 <form class="Settings-form">
                     <span class="Settings-form-title">Settings:</span>
                     <div class="grid-container-BallsAndShiftButtuns">
                         <div class="grid-item-BallsAndShiftButtuns">
-
                             <table>
                                 <td>Amount of balls:</td>
                                     <td>
@@ -325,7 +344,7 @@
                             <table>
                                 <td>5 point:</td>
                                 <td>
-                                    <select id="5Point" onchange="pictureChange5Point(event)">
+                                    <select id="5Point" >
                                         <option value="Azure">Azure</option>
                                         <option value="Blue">Blue</option>
                                         <option value="Brown">Brown</option>
@@ -341,7 +360,7 @@
                                     <img id="image1" style="width: 30px; height:30px;"></tr>
                                     <td>15 point:</td>
                                     <td>
-                                        <select id="15Point" onchange="pictureChange15Point(event)">
+                                        <select id="15Point" >
                                             <option value="Azure">Azure</option>
                                             <option value="Blue">Blue</option>
                                             <option value="Brown">Brown</option>
@@ -358,7 +377,7 @@
                                         </tr>
                                         <td>25 point:</td>
                                         <td>
-                                            <select id="25Point" onchange="pictureChange25Point(event)">
+                                            <select id="25Point" >
                                                 <option value="Azure">Azure</option>
                                                 <option value="Blue">Blue</option>
                                                 <option value="Brown">Brown</option>
@@ -396,7 +415,7 @@
                     </div>
                     <div class="grid-container-Buttons">
                         <div class="grid-item-Buttons">
-                            <button type="button" onclick="randomSettings()">Random Settings</button>
+                            <button type="button" id="randomButton">Random Settings</button>
                         </div>
                         <div class="grid-item-Buttons">
                             <button type="button" value="Submit" onclick="applySettings()">Apply Settings</button>
@@ -441,6 +460,8 @@
                 
                 <div id="gameDiv">
                     <canvas id="canvas" height="500" width="600"></canvas>
+                    <img id="candy" src="css/candy.jpg"  style="display:none" height="40px" width="40px"/>
+                    <img id="liveImg" src="css/liveImg.jpg"  style="display:none" height="40px" width="40px"/>
                     <script>
                         var context= document.getElementById('canvas').getContext("2d");
                         var bgSound=new Audio("PacManSound.mp3");
@@ -473,6 +494,11 @@
                         var numOf15PointBall= 50*0.3;
                         var numOf25PointBall= 50*0.1; 
                         var isIntervalSet = false;
+                        var imgCandy=document.getElementById("candy");
+                        var image1=document.getElementById("image1");
+                        var image2=document.getElementById("image2");
+                        var image3=document.getElementById("image3");
+                        var liveImg=document.getElementById("liveImg");
                 </script>
                 </div>
 

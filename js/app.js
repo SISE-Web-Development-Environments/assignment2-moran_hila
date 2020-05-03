@@ -237,8 +237,6 @@ function moveCandy(){
 }
 
 function drowCandy(){
-	var imgCandy=new Image(40,40);
-	imgCandy.src="css/candy.jpg";
 	context.beginPath();
 	context.drawImage(imgCandy,candyCell[0]*50+5, candyCell[1]*50+5,40,40);
 	context.fill();
@@ -368,10 +366,8 @@ function Draw() {
 				context.fill();
 			}
 			if(board[i][j]==1){
-				let imgMedicine=new Image(40,40);
-				imgMedicine.src="css/liveImg.jpg"
 				context.beginPath();
-				context.drawImage(imgMedicine,center.x+5, center.y+5,40,40);
+				context.drawImage(liveImg,center.x+5, center.y+5,40,40);
 				context.fill();
 			}
 
