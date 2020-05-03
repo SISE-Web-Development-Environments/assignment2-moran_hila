@@ -138,28 +138,6 @@ function pictureChange5Point (event){
     }
 }
 
-// function pictureChange5Point (event) {
-//     if (event.target.value == "Azure") {
-//         document.getElementById("image1").src = document.getElementById("AzureBall");
-//     } else if (event.target.value == "Blue") {
-//         document.getElementById("image1").src =  document.getElementById("BlueBall");
-//     } else if (event.target.value == "Brown") {
-//         document.getElementById("image1").src = document.getElementById("BrownBall");
-//     } else if (event.target.value == "Green") {
-//         document.getElementById("image1").src = document.getElementById("GreenBall");
-//     } else if (event.target.value == "Pink") {
-//         document.getElementById("image1").src = document.getElementById("PinkBall");
-//     } else if (event.target.value == "Red") {
-//         document.getElementById("image1").src = document.getElementById("RedBall");
-//     } else if (event.target.value == "Yellow") {
-//         document.getElementById("image1").src = document.getElementById("YellowBall");
-//     } else if (event.target.value == "Purple") {
-//         document.getElementById("image1").src = document.getElementById("PurpleBall");
-//     } else if (event.target.value == "Gray") {
-//         document.getElementById("image1").src = document.getElementById("GrayBall");
-//     }
-// }
-
 function pictureChange15Point(event){
     if (event.target.value == "Azure") {
         image2.src =AzureBall.src;
@@ -181,29 +159,6 @@ function pictureChange15Point(event){
         image2.src = GrayBall.src;
     }
 }
-
-// function pictureChange15Point(event) {
-//     if (event.target.value == "Azure") {
-//         document.getElementById("image2").src = document.getElementById("AzureBall");
-//     } else if (event.target.value == "Blue") {
-//         document.getElementById("image2").src = document.getElementById("BlueBall");
-//     } else if (event.target.value == "Brown") {
-//         document.getElementById("image2").src = document.getElementById("BrownBall");
-//     } else if (event.target.value == "Green") {
-//         document.getElementById("image2").src = document.getElementById("GreenBall");
-//     } else if (event.target.value == "Pink") {
-//         document.getElementById("image2").src = document.getElementById("PinkBall");
-//     } else if (event.target.value == "Red") {
-//         document.getElementById("image2").src = document.getElementById("RedBall");
-//     } else if (event.target.value == "Yellow") {
-//         document.getElementById("image2").src = document.getElementById("YellowBall");
-//     } else if (event.target.value == "Purple") {
-//         document.getElementById("image2").src = document.getElementById("PurpleBall");
-//     } else if (event.target.value == "Gray") {
-//         document.getElementById("image2").src = document.getElementById("GrayBall");
-//     }
-// }
-
 
 function pictureChange25Point (event){
     if (event.target.value == "Azure") {
@@ -227,27 +182,6 @@ function pictureChange25Point (event){
     }
 }
 
-// function pictureChange25Point (event) {
-//     if (event.target.value == "Azure") {
-//         document.getElementById("image3").src = document.getElementById("AzureBall");
-//     } else if (event.target.value == "Blue") {
-//         document.getElementById("image3").src = document.getElementById("BlueBall");
-//     } else if (event.target.value == "Gray") {
-//         document.getElementById("image3").src = document.getElementById("GrayBall");
-//     } else if (event.target.value == "Brown") {
-//         document.getElementById("image3").src = document.getElementById("BrownBall");
-//     } else if (event.target.value == "Green") {
-//         document.getElementById("image3").src = document.getElementById("GreenBall");
-//     } else if (event.target.value == "Pink") {
-//         document.getElementById("image3").src = document.getElementById("PinkBall");
-//     } else if (event.target.value == "Red") {
-//         document.getElementById("image3").src = document.getElementById("RedBall");
-//     } else if (event.target.value == "Yellow") {
-//         document.getElementById("image3").src = document.getElementById("YellowBall");
-//     } else if (event.target.value == "Purple") {
-//         document.getElementById("image3").src = document.getElementById("PurpleBall");
-//     }
-// }
 
 function setElements(){
     //moveUp = document.getElementById("keyup");
@@ -271,6 +205,15 @@ function setElements(){
     document.getElementById("image2set").src = document.getElementById("image2").src;
     document.getElementById("image3set").src = document.getElementById("image3").src;
 }
+
+
+$(document).ready(function (e) {
+    $("#applyButton").click(function(){
+        applySettings();
+     });
+     
+     $('#applyButton').click();
+});
 
 function applySettings(){
     let valid= true;

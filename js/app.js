@@ -370,8 +370,6 @@ function Draw() {
 				context.drawImage(liveImg,center.x+5, center.y+5,40,40);
 				context.fill();
 			}
-
-			
 		}
 	}
 	drawMonsters();
@@ -439,7 +437,6 @@ function UpdatePosition() {
 		lives++;
 		
 	}
-	
 	board[shape.i][shape.j] = 2;
 	Draw();
 	if( !eatCandy&& candyCell[0]==shape.i && candyCell[1]==shape.j){
@@ -450,6 +447,7 @@ function UpdatePosition() {
 			clearTimeout(timeOutCandy[j]);
 		}
 	}
+	//check if the packman get to the monster
 	for(var i=0; i<monstersPlaces.length;i++){
 		var deltaX = monstersPlaces[i].x - shape.i;
 		var deltaY = monstersPlaces[i].y - shape.j;
@@ -458,7 +456,6 @@ function UpdatePosition() {
 			initMonsters();
 		}
 	}
-
 	var currentTime = new Date();
 	time_elapsed = (currentTime - start_time) / 1000;
 	//faild from disqualifications because of the monster
