@@ -304,8 +304,7 @@ function checkValidBallsColors(){
 }
 
 $(document).ready(function(){   
-    $("#randomButton").on("click", function(e){
-        e.preventDefault();
+    $("#randomButton").on("click", function(){
         moveUp = 38;
         moveDown = 40;
         moveRight= 39;
