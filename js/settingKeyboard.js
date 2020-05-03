@@ -116,7 +116,7 @@ function checkKeyIsValidLetterAndNumber(key) {
     }
 }
 
-$("#5Point").change(function(event){
+function pictureChange5Point (event){
     if (event.target.value == "Azure") {
         image1.src =AzureBall.src;
     } else if (event.target.value == "Blue") {
@@ -136,7 +136,7 @@ $("#5Point").change(function(event){
     } else if (event.target.value == "Gray") {
         image1.src = GrayBall.src;
     }
-});
+}
 
 // function pictureChange5Point (event) {
 //     if (event.target.value == "Azure") {
@@ -160,7 +160,7 @@ $("#5Point").change(function(event){
 //     }
 // }
 
-$("#15Point").change(function(event){
+function pictureChange15Point(event){
     if (event.target.value == "Azure") {
         image2.src =AzureBall.src;
     } else if (event.target.value == "Blue") {
@@ -180,7 +180,7 @@ $("#15Point").change(function(event){
     } else if (event.target.value == "Gray") {
         image2.src = GrayBall.src;
     }
-});
+}
 
 // function pictureChange15Point(event) {
 //     if (event.target.value == "Azure") {
@@ -205,7 +205,7 @@ $("#15Point").change(function(event){
 // }
 
 
-$("#25Point").change(function(event){
+function pictureChange25Point (event){
     if (event.target.value == "Azure") {
         image3.src =AzureBall.src;
     } else if (event.target.value == "Blue") {
@@ -225,7 +225,7 @@ $("#25Point").change(function(event){
     } else if (event.target.value == "Gray") {
         image3.src = GrayBall.src;
     }
-});
+}
 
 // function pictureChange25Point (event) {
 //     if (event.target.value == "Azure") {
