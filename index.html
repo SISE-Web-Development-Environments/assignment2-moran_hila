@@ -41,39 +41,6 @@
         </ul>
     </nav>
 <section>
-    <script>
-            var bgSound=new Audio("PacManSound.mp3");
-            bgSound.setAttribute("loop", "true");
-            var paused=false;
-            var moveUp;
-            var moveDown;
-            var moveRight;
-            var moveLeft;
-            var amountMon;
-            var amountTime;
-            var amountBalls=50;
-            var point5;
-            var point15;
-            var point25;
-            var context;
-            var maxScore;
-            var isTheGameEnd=false;
-            var shape = new Object();
-            var board= new Array();
-            var score = 0;
-            var lives= 5;
-            var pac_color= "yellow";
-            var start_time= new Date();
-            var time_elapsed=0;
-            var interval;
-            var cnt = 120;
-            var food_remain= 50;
-            var pacman_remain=1;
-            var numOf5PointBall= 50*0.6;
-            var numOf15PointBall= 50*0.3;
-            var numOf25PointBall= 50*0.1; 
-            var isIntervalSet = false;
-    </script>
     <!--WelcomeDiv-->
     <div id="WelcomeDiv">
         <div class="Welcome-container">
@@ -474,6 +441,39 @@
                 
                 <div id="gameDiv">
                     <canvas id="canvas" height="500" width="600"></canvas>
+                    <script>
+                        var context= document.getElementById('canvas').getContext("2d");
+                        var bgSound=new Audio("PacManSound.mp3");
+                        bgSound.setAttribute("loop", "true");
+                        var paused=false;
+                        var moveUp;
+                        var moveDown;
+                        var moveRight;
+                        var moveLeft;
+                        var amountMon;
+                        var amountTime;
+                        var amountBalls=50;
+                        var point5;
+                        var point15;
+                        var point25;
+                        var maxScore;
+                        var isTheGameEnd=false;
+                        var shape = new Object();
+                        var board= new Array();
+                        var score = 0;
+                        var lives= 5;
+                        var pac_color= "yellow";
+                        var start_time= new Date();
+                        var time_elapsed=0;
+                        var interval;
+                        var cnt = 120;
+                        var food_remain= 50;
+                        var pacman_remain=1;
+                        var numOf5PointBall= 50*0.6;
+                        var numOf15PointBall= 50*0.3;
+                        var numOf25PointBall= 50*0.1; 
+                        var isIntervalSet = false;
+                </script>
                 </div>
 
             </div>

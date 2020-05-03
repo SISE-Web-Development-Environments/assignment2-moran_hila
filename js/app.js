@@ -30,7 +30,6 @@ function initParams(){
 	timeOutCandy=new Array();
 	timeOutInit=new Array();
 	isTheGameEnd=false;
-	context= canvas.getContext("2d");
     shape = new Object();
 	board = new Array();
 	score = 0;
