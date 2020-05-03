@@ -207,14 +207,6 @@ function setElements(){
 }
 
 
-$(document).ready(function (e) {
-    $("#applyButton").click(function(){
-        applySettings();
-     });
-     
-     $('#applyButton').click();
-});
-
 function applySettings(){
     let valid= true;
     setElements();
@@ -303,73 +295,38 @@ function checkValidBallsColors(){
     }
 }
 
-$(document).ready(function(){   
-    $("#randomButton").on("click", function(){
-        moveUp = 38;
-        moveDown = 40;
-        moveRight= 39;
-        moveLeft = 37;
-        document.getElementById("keyup").value = "up";
-        document.getElementById("keydown").value = "down";
-        document.getElementById("keyright").value = "right";
-        document.getElementById("keyleft").value = "left";
-        document.getElementById("amountMonsters").value = Math.floor(Math.random() * 4) + 1;
-        document.getElementById("amountBalls").value = Math.floor(Math.random() * 41) + 50;
-        document.getElementById("amountTime").value = Math.floor(Math.random() * 1000) + 60;
-        let num1=Math.floor(Math.random() * 9) + 1;
-        let num2=Math.floor(Math.random() * 9) + 1;
-        let num3=Math.floor(Math.random() * 9) + 1;
-        let color1=randomColor(num1);
-        document.getElementById("5Point").value = color1;
-        pictureChange5PointRandom(color1);
-        while(num1==num2){
-            num2=Math.floor(Math.random() * 9) + 1;
-        }
-        let color2=randomColor(num2);
-        document.getElementById("15Point").value = color2;
-        pictureChange15PointRandom(color2);
-        while(num3==num2 || num1==num3){
-            num3=Math.floor(Math.random() * 9) + 1;
-        }
-        let color3=randomColor(num3);
-        document.getElementById("25Point").value = color3;
-        pictureChange25PointRandom(color3);
-        setElements();
-    }); 
- });
-
-// function randomSettings(){
-//     moveUp = 38;
-//     moveDown = 40;
-//     moveRight= 39;
-//     moveLeft = 37;
-//     document.getElementById("keyup").value = "up";
-//     document.getElementById("keydown").value = "down";
-//     document.getElementById("keyright").value = "right";
-//     document.getElementById("keyleft").value = "left";
-//     document.getElementById("amountMonsters").value = Math.floor(Math.random() * 4) + 1;
-//     document.getElementById("amountBalls").value = Math.floor(Math.random() * 41) + 50;
-//     document.getElementById("amountTime").value = Math.floor(Math.random() * 1000) + 60;
-//     let num1=Math.floor(Math.random() * 9) + 1;
-//     let num2=Math.floor(Math.random() * 9) + 1;
-//     let num3=Math.floor(Math.random() * 9) + 1;
-//     let color1=randomColor(num1);
-//     document.getElementById("5Point").value = color1;
-//     pictureChange5PointRandom(color1);
-//     while(num1==num2){
-//         num2=Math.floor(Math.random() * 9) + 1;
-//     }
-//     let color2=randomColor(num2);
-//     document.getElementById("15Point").value = color2;
-//     pictureChange15PointRandom(color2);
-//     while(num3==num2 || num1==num3){
-//         num3=Math.floor(Math.random() * 9) + 1;
-//     }
-//     let color3=randomColor(num3);
-//     document.getElementById("25Point").value = color3;
-//     pictureChange25PointRandom(color3);
-//     setElements();
-// }
+function randomSettings(){
+    moveUp = 38;
+    moveDown = 40;
+    moveRight= 39;
+    moveLeft = 37;
+    document.getElementById("keyup").value = "up";
+    document.getElementById("keydown").value = "down";
+    document.getElementById("keyright").value = "right";
+    document.getElementById("keyleft").value = "left";
+    document.getElementById("amountMonsters").value = Math.floor(Math.random() * 4) + 1;
+    document.getElementById("amountBalls").value = Math.floor(Math.random() * 41) + 50;
+    document.getElementById("amountTime").value = Math.floor(Math.random() * 1000) + 60;
+    let num1=Math.floor(Math.random() * 9) + 1;
+    let num2=Math.floor(Math.random() * 9) + 1;
+    let num3=Math.floor(Math.random() * 9) + 1;
+    let color1=randomColor(num1);
+    document.getElementById("5Point").value = color1;
+    pictureChange5PointRandom(color1);
+    while(num1==num2){
+        num2=Math.floor(Math.random() * 9) + 1;
+    }
+    let color2=randomColor(num2);
+    document.getElementById("15Point").value = color2;
+    pictureChange15PointRandom(color2);
+    while(num3==num2 || num1==num3){
+        num3=Math.floor(Math.random() * 9) + 1;
+    }
+    let color3=randomColor(num3);
+    document.getElementById("25Point").value = color3;
+    pictureChange25PointRandom(color3);
+    setElements();
+}
 
 function randomColor (number) {
     if(number==1){
